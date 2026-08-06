@@ -1,5 +1,5 @@
 import type { Product } from "@/lib/products";
-import { GraduationCap, TrendingUp, FileText, CheckSquare, Video, Cpu, ShoppingCart } from "lucide-react";
+import { GraduationCap, TrendingUp, FileText, CheckSquare, Video, Cpu, ShoppingCart, CheckCircle2 } from "lucide-react";
 
 interface ProductGridProps {
   products: Product[];
@@ -57,10 +57,21 @@ export default function ProductGrid({ products, onBuy }: ProductGridProps) {
                   {product.title}
                 </h3>
                 
-                <p className="text-sm text-muted-foreground mb-6 line-clamp-3 leading-relaxed flex-1">
+                <p className={`text-sm text-muted-foreground leading-relaxed ${product.features?.length ? "mb-3" : "mb-6 flex-1"}`}>
                   {product.desc}
                 </p>
-                
+
+                {product.features && product.features.length > 0 && (
+                  <ul className="mb-6 flex-1 space-y-1.5">
+                    {product.features.slice(0, 4).map((feat) => (
+                      <li key={feat} className="flex items-start gap-1.5">
+                        <CheckCircle2 size={13} className="text-primary shrink-0 mt-0.5" />
+                        <span className="text-xs text-primary/90 leading-snug">{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
                 <div className="mt-auto pt-4 border-t border-border flex flex-col gap-4">
                   <div className="text-lg font-extrabold text-primary">
                     {product.price}
