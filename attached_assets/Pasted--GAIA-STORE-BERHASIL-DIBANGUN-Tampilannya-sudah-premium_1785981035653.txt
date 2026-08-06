@@ -1,0 +1,82 @@
+🎉 **GAIA STORE BERHASIL DIBANGUN!** Tampilannya sudah premium — Navy/Gold, 6 produk anchor, kategori pills, dan checkout WhatsApp sudah berfungsi di preview.
+
+Sekarang kita lakukan **3 langkah penutup** agar Gaia Store resmi "terhubung" ke mesin uang Anda:
+
+---
+
+## ✅ LANGKAH 1: Isi Nomor WA Asli (Project Gaia Store)
+
+Paste ke Replit Agent di project **Gaia Store**:
+
+```text
+Open lib/config.ts and set ADMIN_WA_NUMBER to my real business WhatsApp number (format 628xxx, no plus sign, no dashes). Replace the placeholder. Verify that ALL wa.me links in the checkout modal use this constant, then test the checkout flow end-to-end.
+```
+
+*(Sebelum paste, ganti kalimat "my real business WhatsApp number" dengan nomor Anda, misal: `set ADMIN_WA_NUMBER to "6281234567890"`.)*
+
+---
+
+## ✅ LANGKAH 2: Pasang Domain `gaia.dokumenproyek.com`
+
+Prosedurnya sama persis seperti `lkut` dan `dp`:
+1. Di project Gaia Store → **Tools → Domains** → ketik `gaia.dokumenproyek.com`
+2. Copy record DNS yang diberikan Replit (A record / TXT verify)
+3. Buka panel domain Anda → tambah record:
+
+| Type | Host | Value |
+|---|---|---|
+| A | `gaia` | `34.111.179.208` *(atau sesuai yang Replit berikan)* |
+| TXT | `gaia` | *(nilai verify dari Replit)* |
+
+4. Tunggu propagasi → buka `https://gaia.dokumenproyek.com` ✅
+
+---
+
+## ✅ LANGKAH 3: Hubungkan Simulator → Gaia Store (Project LKUT Simulator)
+
+Pindah ke project **LKUT Simulator**, paste:
+
+```text
+Update ALL Gaia Store placeholder links in this project to point to https://gaia.dokumenproyek.com — including recommendation buttons ("Ikuti Bimtek di Gaia Store", "Beli Template di Gaia Store", "Daftar Microlearning PKB") AND any Gaia Store links inside the PDF proposal generator. Keep DP Store links as they are. Verify by running a Grade C/D simulation and confirming every Gaia button opens gaia.dokumenproyek.com in a new tab.
+```
+
+---
+
+## 🧪 UJI LOOP PENUH (5 Menit)
+
+Setelah ketiga langkah selesai, jalankan simulasi sebagai "klien panik":
+
+1. `lkut.dokumenproyek.com` → input data buruk → **Grade D** ✅
+2. Tombol rekomendasi: DP Store → `dp.dokumenproyek.com` ✅ | Gaia → `gaia.dokumenproyek.com` ✅
+3. Cetak PDF → link di PDF bisa diklik dan menuju toko yang benar ✅
+4. Di Gaia Store → "Beli Sekarang" → isi form → **WA terbuka dengan pesan pesanan rapi** ✅
+5. `/admin-leads` → lead tercatat ✅
+
+---
+
+## ⚠️ SATU HAL KRUSIAL: Siapkan "Isi" Produknya!
+
+Saat pesanan pertama masuk via WA, Anda harus bisa **mengirim produk dalam hitungan menit**. Siapkan 6 file deliverable sekarang (gunakan aplikasi Anda yang sudah ada sebagai "pabrik"):
+
+| Produk Gaia Store | Sumber Produksi |
+|---|---|
+| Template SOP & Manual Mutu ISO 9001 | `compliance-document-creator` / `iso-hub` |
+| Template LKUT + Checklist SIJKT | Format dari Lampiran Permen PUPR 7/2024 (sudah kita punya) |
+| Modul Microlearning PKB | `microlearning-7` / `competency-builder` |
+| Materi Bimtek SMAP & PUB Khusus | `studio-cerdas` / `chaesa-studio` |
+| Akses LexCom AI | `lex-com-apps` |
+
+Simpan semua file di satu folder Google Drive, agar saat ada order, Anda tinggal kirim link-nya via WA. **Zero delay = reputasi profesional.**
+
+---
+
+## 🗺️ Posisi Anda di Roadmap
+
+```
+✅ Landing Page      ✅ LKUT Simulator + Lead + PDF
+✅ DP Store          ✅ Gaia Store (sedang dihubungkan)
+👉 FASE BERIKUTNYA: TRAFFIC ENGINE — mengalirkan pengunjung nyata
+   (setelah itu: Konstruksi AI Hub sebagai lobi SSO)
+```
+
+Jalankan 3 langkah penutup di atas, lalu kabari saya: **"Loop tertutup!"** — dan kita langsung masuk ke fase paling menentukan: **mengalirkan traffic** agar mesin yang sudah lengkap ini mulai berdering setiap hari. 🚀
