@@ -10,9 +10,10 @@ interface Order {
   nama_perusahaan: string;
   nama_pic: string;
   email: string;
-  wa: string;
+  whatsapp: string;
   produk: string;
   catatan?: string;
+  bukti_filename?: string;
   bukti_url?: string;
   status: OrderStatus;
 }
@@ -234,7 +235,7 @@ export default function AdminPesanan() {
                   </div>
                   <div>
                     <span className="text-muted-foreground text-xs block">WhatsApp</span>
-                    <span className="text-white">{order.wa}</span>
+                    <span className="text-white">{order.whatsapp}</span>
                   </div>
                   {order.catatan && (
                     <div className="col-span-2">
@@ -265,7 +266,7 @@ export default function AdminPesanan() {
 
                   {/* Chat WA */}
                   <a
-                    href={`https://wa.me/${order.wa.replace(/\D/g, "")}?text=${encodeURIComponent(`Halo ${order.nama_pic}, pesanan Anda untuk "${order.produk}" sedang kami proses.`)}`}
+                    href={`https://wa.me/${order.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Halo ${order.nama_pic}, pesanan Anda untuk "${order.produk}" sedang kami proses.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 bg-green-700 hover:bg-green-600 text-white text-xs font-semibold rounded-md px-3 py-1.5 transition-colors"

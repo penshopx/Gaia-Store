@@ -21,10 +21,10 @@ router.post(
   "/konfirmasi-pesanan",
   upload.single("bukti_bayar"),
   async (req, res): Promise<void> => {
-    const { nama_perusahaan, nama_pic, email, wa, produk, catatan } = req.body as Record<string, string>;
+    const { nama_perusahaan, nama_pic, email, whatsapp, produk, catatan } = req.body as Record<string, string>;
 
-    if (!nama_perusahaan || !nama_pic || !email || !wa || !produk) {
-      res.status(400).json({ error: "Field wajib: nama_perusahaan, nama_pic, email, wa, produk" });
+    if (!nama_perusahaan || !nama_pic || !email || !whatsapp || !produk) {
+      res.status(400).json({ error: "Field wajib: nama_perusahaan, nama_pic, email, whatsapp, produk" });
       return;
     }
 
@@ -33,9 +33,11 @@ router.post(
 
       // 1. Upload proof file to Supabase Storage
       let bukti_url: string | null = null;
+      let bukti_filename: string | null = null;
       if (req.file) {
         const safeName = req.file.originalname.replace(/\s+/g, "-").replace(/[^a-zA-Z0-9._-]/g, "");
-        const filename = `${Date.now()}-${safeName}`;
+        bukti_filename = `${Date.now()}-${safeName}`;
+        const filename = bukti_filename;
 
         const { error: uploadError } = await supabase.storage
           .from("proofs")
@@ -58,9 +60,10 @@ router.post(
           nama_perusahaan,
           nama_pic,
           email,
-          wa,
+          whatsapp,
           produk,
           catatan: catatan || null,
+          bukti_filename,
           bukti_url,
           status: "baru",
         })
@@ -93,7 +96,7 @@ router.post(
                   <tr><td style="padding:6px 0;color:#64748b">Perusahaan</td><td style="padding:6px 0">${nama_perusahaan}</td></tr>
                   <tr><td style="padding:6px 0;color:#64748b">PIC</td><td style="padding:6px 0">${nama_pic}</td></tr>
                   <tr><td style="padding:6px 0;color:#64748b">Email</td><td style="padding:6px 0">${email}</td></tr>
-                  <tr><td style="padding:6px 0;color:#64748b">WhatsApp</td><td style="padding:6px 0">${wa}</td></tr>
+                  <tr><td style="padding:6px 0;color:#64748b">WhatsApp</td><td style="padding:6px 0">${whatsapp}</td></tr>
                   <tr><td style="padding:6px 0;color:#64748b">Catatan</td><td style="padding:6px 0">${catatan || "-"}</td></tr>
                   ${bukti_url ? `<tr><td style="padding:6px 0;color:#64748b">Bukti Bayar</td><td style="padding:6px 0"><a href="${bukti_url}" style="color:#F59E0B">Lihat file</a></td></tr>` : ""}
                 </table>

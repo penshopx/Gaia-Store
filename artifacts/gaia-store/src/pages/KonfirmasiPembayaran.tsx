@@ -19,7 +19,7 @@ export default function KonfirmasiPembayaran() {
     nama_perusahaan: perusahaanDefault,
     nama_pic: picDefault,
     email: "",
-    wa: waDefault,
+    whatsapp: waDefault,
     produk: produkDefault,
     catatan: "",
   });
@@ -39,7 +39,7 @@ export default function KonfirmasiPembayaran() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.nama_perusahaan || !form.nama_pic || !form.email || !form.wa || !form.produk) {
+    if (!form.nama_perusahaan || !form.nama_pic || !form.email || !form.whatsapp || !form.produk) {
       setErrorMsg("Mohon lengkapi semua field yang wajib diisi.");
       return;
     }
@@ -52,7 +52,7 @@ export default function KonfirmasiPembayaran() {
       data.append("nama_perusahaan", form.nama_perusahaan);
       data.append("nama_pic", form.nama_pic);
       data.append("email", form.email);
-      data.append("wa", form.wa);
+      data.append("whatsapp", form.whatsapp);
       data.append("produk", form.produk);
       data.append("catatan", form.catatan);
       if (file) data.append("bukti_bayar", file);
@@ -188,10 +188,10 @@ export default function KonfirmasiPembayaran() {
               No WhatsApp <span className="text-red-400">*</span>
             </label>
             <input
-              name="wa"
+              name="whatsapp"
               type="tel"
               required
-              value={form.wa}
+              value={form.whatsapp}
               onChange={handleChange}
               className="w-full bg-card border border-border rounded-md px-3 py-2.5 text-sm text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
               placeholder="08xx-xxxx-xxxx"
