@@ -83,7 +83,7 @@ router.post(
         try {
           const resend = new Resend(resendKey);
           await resend.emails.send({
-            from: "Gaia Store <onboarding@resend.dev>",
+            from: "DokumenProyek <orders@dokumenproyek.com>",
             to: adminEmail,
             subject: `[Gaia Store] Pesanan Baru: ${produk}`,
             html: `
