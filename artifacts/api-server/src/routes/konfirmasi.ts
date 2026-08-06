@@ -21,7 +21,10 @@ router.post(
   "/konfirmasi-pesanan",
   upload.single("bukti_bayar"),
   async (req, res): Promise<void> => {
-    const { nama_perusahaan, nama_pic, email, whatsapp, produk, catatan } = req.body as Record<string, string>;
+    const { nama_perusahaan, nama_pic, email, whatsapp, produk, catatan, deskripsi_kasus } = req.body as Record<string, string>;
+    // Merge deskripsi_kasus into catatan for DB storage (no schema change needed)
+    const catatanMerged = [catatan, deskripsi_kasus ? `[Deskripsi Kasus] ${deskripsi_kasus}` : ""]
+      .filter(Boolean).join("\n\n") || null;
 
     if (!nama_perusahaan || !nama_pic || !email || !whatsapp || !produk) {
       res.status(400).json({ error: "Field wajib: nama_perusahaan, nama_pic, email, whatsapp, produk" });
@@ -62,7 +65,7 @@ router.post(
           email,
           whatsapp,
           produk,
-          catatan: catatan || null,
+          catatan: catatanMerged,
           bukti_filename,
           bukti_url,
           status: "baru",
@@ -97,6 +100,7 @@ router.post(
                   <tr><td style="padding:6px 0;color:#64748b">PIC</td><td style="padding:6px 0">${nama_pic}</td></tr>
                   <tr><td style="padding:6px 0;color:#64748b">Email</td><td style="padding:6px 0">${email}</td></tr>
                   <tr><td style="padding:6px 0;color:#64748b">WhatsApp</td><td style="padding:6px 0">${whatsapp}</td></tr>
+                  ${deskripsi_kasus ? `<tr><td style="padding:6px 0;color:#64748b;width:140px">Deskripsi Kasus</td><td style="padding:6px 0;font-weight:600;color:#b45309">${deskripsi_kasus}</td></tr>` : ""}
                   <tr><td style="padding:6px 0;color:#64748b">Catatan</td><td style="padding:6px 0">${catatan || "-"}</td></tr>
                   ${bukti_url ? `<tr><td style="padding:6px 0;color:#64748b">Bukti Bayar</td><td style="padding:6px 0"><a href="${bukti_url}" style="color:#F59E0B">Lihat file</a></td></tr>` : ""}
                 </table>

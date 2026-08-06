@@ -12,7 +12,12 @@ const CATEGORIES = [
   "Bimtek & PUB",
   "Template SOP & ISO",
   "Microlearning PKB",
-  "AI Tools"
+  "AI Tools",
+  "Tender & Legal",
+  "LKUT & SIJKT",
+  "SKK & PKB",
+  "Klinik Konstruksi",
+  "Storage",
 ];
 
 export default function Hero({ activeCategory, setActiveCategory, searchQuery, setSearchQuery }: HeroProps) {

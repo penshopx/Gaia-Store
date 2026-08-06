@@ -21,6 +21,7 @@ export default function KonfirmasiPembayaran() {
     email: "",
     whatsapp: waDefault,
     produk: produkDefault,
+    deskripsi_kasus: "",
     catatan: "",
   });
   const [file, setFile] = useState<File | null>(null);
@@ -54,6 +55,7 @@ export default function KonfirmasiPembayaran() {
       data.append("email", form.email);
       data.append("whatsapp", form.whatsapp);
       data.append("produk", form.produk);
+      data.append("deskripsi_kasus", form.deskripsi_kasus);
       data.append("catatan", form.catatan);
       if (file) data.append("bukti_bayar", file);
 
@@ -195,6 +197,22 @@ export default function KonfirmasiPembayaran() {
               onChange={handleChange}
               className="w-full bg-card border border-border rounded-md px-3 py-2.5 text-sm text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
               placeholder="08xx-xxxx-xxxx"
+            />
+          </div>
+
+          {/* Deskripsi Kasus */}
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium text-white block">
+              Deskripsi Kasus{" "}
+              <span className="text-muted-foreground font-normal">(opsional — untuk produk Klinik Konstruksi)</span>
+            </label>
+            <textarea
+              name="deskripsi_kasus"
+              rows={4}
+              value={form.deskripsi_kasus}
+              onChange={handleChange}
+              className="w-full bg-card border border-border rounded-md px-3 py-2.5 text-sm text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none"
+              placeholder="Jelaskan situasi/kasus yang ingin dikonsultasikan: latar belakang, masalah utama, dan hasil yang diharapkan..."
             />
           </div>
 

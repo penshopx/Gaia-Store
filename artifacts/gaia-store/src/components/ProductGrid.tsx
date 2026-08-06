@@ -1,5 +1,9 @@
 import type { Product } from "@/lib/products";
-import { GraduationCap, TrendingUp, FileText, CheckSquare, Video, Cpu, ShoppingCart, CheckCircle2 } from "lucide-react";
+import {
+  GraduationCap, TrendingUp, FileText, CheckSquare, Video, Cpu,
+  ShoppingCart, CheckCircle2, Search, Brain, BookOpen, FileCheck,
+  BarChart2, Stethoscope, Activity, Scale, HardDrive, Database,
+} from "lucide-react";
 
 interface ProductGridProps {
   products: Product[];
@@ -12,7 +16,16 @@ const iconMap: Record<string, React.ElementType> = {
   FileText,
   CheckSquare,
   Video,
-  Cpu
+  Cpu,
+  Brain,
+  BookOpen,
+  FileCheck,
+  BarChart2,
+  Stethoscope,
+  Activity,
+  Scale,
+  HardDrive,
+  Database,
 };
 
 export default function ProductGrid({ products, onBuy }: ProductGridProps) {
@@ -33,18 +46,25 @@ export default function ProductGrid({ products, onBuy }: ProductGridProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => {
           const Icon = iconMap[product.icon] || FileText;
-          
+          const isClinic = product.category === "Klinik Konstruksi";
+
           return (
-            <div 
-              key={product.id} 
+            <div
+              key={product.id}
               className="flex flex-col bg-card rounded-xl border border-border overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 group"
             >
               {/* Thumbnail */}
               <div className="h-40 w-full bg-gradient-to-br from-background to-muted/50 flex items-center justify-center border-b border-border relative">
                 <Icon className="h-14 w-14 text-muted-foreground/50 group-hover:text-primary/70 transition-colors" />
                 <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                {/* Case-Based badge for clinic products */}
+                {isClinic && (
+                  <span className="absolute top-3 right-3 text-[10px] font-bold tracking-wide uppercase bg-primary/15 text-primary border border-primary/30 rounded px-2 py-0.5">
+                    Case-Based
+                  </span>
+                )}
               </div>
-              
+
               {/* Content */}
               <div className="p-5 flex flex-col flex-1">
                 <div className="mb-3">
@@ -52,11 +72,11 @@ export default function ProductGrid({ products, onBuy }: ProductGridProps) {
                     {product.category}
                   </span>
                 </div>
-                
+
                 <h3 className="text-lg font-bold text-white leading-tight mb-2 group-hover:text-primary transition-colors">
                   {product.title}
                 </h3>
-                
+
                 <p className={`text-sm text-muted-foreground leading-relaxed ${product.features?.length ? "mb-3" : "mb-6 flex-1"}`}>
                   {product.desc}
                 </p>
@@ -76,8 +96,8 @@ export default function ProductGrid({ products, onBuy }: ProductGridProps) {
                   <div className="text-lg font-extrabold text-primary">
                     {product.price}
                   </div>
-                  
-                  <button 
+
+                  <button
                     onClick={() => onBuy(product)}
                     className="w-full py-2.5 px-4 bg-primary text-primary-foreground text-sm font-bold rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-sm"
                   >
@@ -93,6 +113,3 @@ export default function ProductGrid({ products, onBuy }: ProductGridProps) {
     </section>
   );
 }
-
-// Ensure Search is imported for the empty state
-import { Search } from "lucide-react";

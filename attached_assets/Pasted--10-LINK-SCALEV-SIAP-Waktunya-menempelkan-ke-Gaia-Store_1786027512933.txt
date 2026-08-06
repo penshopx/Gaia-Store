@@ -1,0 +1,84 @@
+🎉 **10 LINK SCALEV SIAP! Waktunya menempelkan ke Gaia Store!**
+
+Semua link sudah lengkap dan sesuai rencana. Sekarang saya siapkan **prompt Replit Agent "sekali jalan"** untuk menempelkan semuanya ke `products.ts` dan mengaktifkan tombol payment link di katalog Gaia Store.
+
+---
+
+## 🚀 PROMPT WIRING LENGKAP (Copy-paste ke Replit Agent di project Gaia-Store)
+
+```text
+Upgrade the Gaia Store catalog with 10 new products and their Scalev payment links. Update src/lib/products.ts to include these new products with their payment links:
+
+NEW PRODUCTS TO ADD:
+1. Bedah Dokumen AI (Semua Jenis Incl. Kontrak) | 250000 | category: 'Tender & Legal' | type: 'digital' | scalev_payment_link: 'https://bayar.gustafta.my.id/p/bedah-dokumen-ai-semua-jenis-incl-kontrak'
+
+2. Ebook Panduan Praktis LKUT 2026 | 150000 | category: 'LKUT & SIJKT' | type: 'digital' | scalev_payment_link: 'https://bayar.gustafta.my.id/p/ebook-panduan-praktis-lkut-2026'
+
+3. Bimtek SKK — Modul + AI Tutor | 199000 | category: 'SKK & PKB' | type: 'training' | scalev_payment_link: 'https://bayar.gustafta.my.id/p/bimtek-skk-modul-ai-tutor'
+
+4. Exec. Summary PKB (Siap Perpanjangan SKK) | 350000 | category: 'SKK & PKB' | type: 'digital' | scalev_payment_link: 'https://bayar.gustafta.my.id/p/exec-summary-pkb-siap-perpanjangan-skk'
+
+5. Template Laporan Keuangan BUJK | 350000 | category: 'LKUT & SIJKT' | type: 'digital' | scalev_payment_link: 'https://bayar.gustafta.my.id/p/template-laporan-keuangan-bujk'
+
+6. Klinik Konstruksi — Case A (Kepatuhan Bermasalah) | 1500000 | category: 'Klinik Konstruksi' | type: 'clinic' | scalev_payment_link: 'https://bayar.gustafta.my.id/p/klinik-konstruksi-case-a-kepatuhan-bermasalah' | desc: 'Kasus SBU ditolak, SKK darurat, LKUT Grade C/D, OSS bermasalah, SMAP gagal audit. Diagnosa + intervensi AI MultiClaw di Workroom.'
+
+7. Klinik Konstruksi — Case B (Tender & Kinerja Proyek) | 2500000 | category: 'Klinik Konstruksi' | type: 'clinic' | scalev_payment_link: 'https://bayar.gustafta.my.id/p/klinik-konstruksi-case-b-tender-kinerja-proyek' | desc: 'Kasus gugur tender, NCR, insiden K3, EVM merah, LHP bermasalah, klaim force majeure. Analisa mendalam + recovery plan.'
+
+8. Klinik Konstruksi — Case C (Sengketa & Klaim) | 5000000 | category: 'Klinik Konstruksi' | type: 'clinic' | scalev_payment_link: 'https://bayar.gustafta.my.id/p/klinik-konstruksi-case-c-sengketa-klaim' | desc: 'Sengketa kontrak, klaim FIDIC, surat sanggah kompleks, somasi subkon, klaim asuransi ditolak. Senjata hukum + teknis untuk melawan.'
+
+9. Storage Add-On 10 GB (3 Bulan) | 99000 | category: 'Storage' | type: 'addon' | scalev_payment_link: 'https://bayar.gustafta.my.id/p/storage-add-on-10-gb-3-bulan-200-chat-bln' | desc: 'Tambahan 10 GB Ruang Simpan + 200 AI chat/bulan untuk 3 bulan. Data aktif selama produk berlaku + grace 90 hari.'
+
+10. Storage Add-On 50 GB (3 Bulan) | 299000 | category: 'Storage' | type: 'addon' | scalev_payment_link: 'https://bayar.gustafta.my.id/p/storage-add-on-50-gb-3-bulan-600-chat-bln' | desc: 'Tambahan 50 GB Ruang Simpan + 600 AI chat/bulan untuk 3 bulan. Data aktif selama produk berlaku + grace 90 hari.'
+
+REQUIREMENTS:
+1. Add these 10 products to the products array in src/lib/products.ts with proper TypeScript types
+2. Update the product grid UI to display these new products with their categories and badges
+3. For clinic products, show the detailed description with case examples
+4. For storage add-ons, add a small note "3 bulan + [X] chat/bulan" in the card
+5. Ensure all "Bayar via Payment Link" buttons are active and link to the correct Scalev URLs
+6. Keep the existing Navy/Gold design and category tabs structure
+7. Add badges for clinic products: "Case-Based" badge
+8. After update, verify that all 10 payment links are clickable and open in new tabs
+
+Also update the /konfirmasi-pembayaran form to include a "Deskripsi Kasus" field (optional) for clinic products so admin can see what case is being handled.
+```
+
+---
+
+## 📋 CHECKLIST SETELAH AGENT SELESAI
+
+Setelah Replit Agent selesai (biasanya 2-3 menit):
+
+1. ✅ **Deploy ulang** project Gaia-Store (tombol Deploy/Publish)
+2. ✅ **Hard refresh** `gaia.dokumenproyek.com/produk` (Ctrl+Shift+R)
+3. ✅ Verifikasi:
+   - 10 produk baru muncul di katalog
+   - Tombol **"Bayar via Payment Link"** aktif (emas & clickable) untuk semua produk baru
+   - Kategori produk benar (LKUT, SKK, Klinik, Storage)
+   - Deskripsi Klinik Case A/B/C detail dan informatif
+
+4. ✅ **Uji 1 transaksi** (pilih produk termurah: Ebook Panduan LKUT 150rb):
+   - Beli Sekarang → Bayar via Payment Link → halaman Scalev terbuka
+   - Kembali → "Saya Sudah Bayar — Konfirmasi Sekarang"
+   - Isi form + upload bukti → cek email + `/admin-pesanan`
+
+---
+
+## 🎯 TARGET AKHIR
+
+Setelah wiring selesai, Gaia Store Anda akan punya:
+- **14 produk digital** dengan payment link aktif (7 lama + 7 baru)
+- **3 Klinik Konstruksi** (Case A/B/C) dengan deskripsi kasus yang jelas
+- **2 Storage Add-On** (10 GB & 50 GB) dengan pricing 3 bulan
+- **Semua tombol kasir hidup** dan siap menerima pembayaran
+
+Dan yang paling penting: **mesin monetisasi Anda resmi punya 4 jalur pendapatan** yang saling melengkapi:
+1. 🛒 Digital self-service (impulse buy)
+2. 🤖 AI subscription (recurring)
+3. 💾 Storage add-on (recurring + lock-in)
+4. 🏥 Klinik case-based (premium per-project)
+5. 🐋 DP Store (high-ticket paus)
+
+---
+
+**Paste prompt di atas ke Replit Agent sekarang, Bos!** Setelah selesai deploy, kita rayakan **"MESIN GAIA STORE RESMI BEROPERASI PENUH!"** 🚀💰
