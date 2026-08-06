@@ -1,0 +1,138 @@
+Siap, Bos! Aturan mapping dan strukturnya sudah saya kunci rapat. 
+
+*(Catatan kecil: Teks "2 actions" sepertinya ikut ter-copy, sehingga array produk aslinya tidak ter-paste. Tapi **tidak masalah sama sekali**, karena kita tahu ID terakhir adalah 16 dan kita akan langsung append 10 produk baru ini mulai dari **ID 17**).*
+
+Berikut adalah snippet kode TypeScript yang sudah di-wire sempurna dengan payment link Scalev, kategorisasi, ikon, dan metadata bisnis (features & type) sesuai aturan yang Bos tetapkan. 
+
+Silakan **copy-paste** blok kode di bawah ini dan tempelkan di bagian paling bawah array `PRODUCTS` pada `src/lib/products.ts` (tepat sebelum tanda kurung siku tutup `];`).
+
+```typescript
+  // ==========================================
+  // WAVE 1 PRODUCTS (ID 17 - 26)
+  // ==========================================
+  {
+    id: 17,
+    category: "AI Tools",
+    title: "Bedah Dokumen AI (Semua Jenis incl. Kontrak)",
+    desc: "Analisa mendalam dokumen kontrak dan teknis menggunakan AI spesialis konstruksi. Hasil akurat dalam hitungan menit.",
+    features: ["Analisa Kontrak", "Review Teknis", "Hasil Cepat", "Format PDF"],
+    price: "Rp 250.000",
+    icon: "Brain",
+    type: "digital",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/bedah-dokumen-ai-semua-jenis-incl-kontrak"
+  },
+  {
+    id: 18,
+    category: "LKUT & SIJKT",
+    title: "Ebook Panduan Praktis LKUT 2026",
+    desc: "Panduan langkah demi langkah menyusun Laporan Keuangan Usaha Tersendiri (LKUT) sesuai standar terbaru 2026.",
+    features: ["Panduan Step-by-Step", "Format LKUT 2026", "Tips Verifikasi", "Update Gratis"],
+    price: "Rp 150.000",
+    icon: "BookOpen",
+    type: "digital",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/ebook-panduan-praktis-lkut-2026"
+  },
+  {
+    id: 19,
+    category: "SKK & PKB",
+    title: "Bimtek SKK + AI Tutor",
+    desc: "Bimbingan teknis persiapan SKK dengan pendampingan AI Tutor personal 24/7 untuk memastikan kelulusan.",
+    features: ["Modul SKK Lengkap", "AI Tutor 24/7", "Simulasi Ujian", "Sertifikat"],
+    price: "Rp 199.000",
+    icon: "GraduationCap",
+    type: "training",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/bimtek-skk-modul-ai-tutor"
+  },
+  {
+    id: 20,
+    category: "SKK & PKB",
+    title: "Executive Summary PKB (Siap Perpanjangan SKK)",
+    desc: "Ringkasan eksekutif PKB yang disusun rapi, tervalidasi, dan siap pakai untuk syarat perpanjangan SKK Anda.",
+    features: ["Format PKB Standar", "Siap Cetak", "Validasi Otomatis", "Panduan Pengisian"],
+    price: "Rp 350.000",
+    icon: "FileCheck",
+    type: "digital",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/exec-summary-pkb-siap-perpanjangan-skk"
+  },
+  {
+    id: 21,
+    category: "LKUT & SIJKT",
+    title: "Template Laporan Keuangan BUJK",
+    desc: "Template laporan keuangan khusus Badan Usaha Jasa Konstruksi (BUJK) yang otomatis dan sesuai standar SBU.",
+    features: ["Format BUJK", "Otomatis Hitung", "Sesuai SBU", "Excel/Docs"],
+    price: "Rp 350.000",
+    icon: "BarChart2",
+    type: "digital",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/template-laporan-keuangan-bujk"
+  },
+  {
+    id: 22,
+    category: "Klinik Konstruksi",
+    title: "Klinik Konstruksi Case A: Kepatuhan Bermasalah",
+    desc: "Penyelesaian kasus spesifik seperti SBU ditolak, SKK darurat, LKUT Grade C/D, hingga masalah OSS.",
+    features: ["SBU/SKK Darurat", "LKUT Grade C/D", "Solusi OSS", "Konsultasi Intensif"],
+    price: "Rp 1.500.000",
+    icon: "Stethoscope",
+    type: "clinic",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/klinik-konstruksi-case-a-kepatuhan-bermasalah"
+  },
+  {
+    id: 23,
+    category: "Klinik Konstruksi",
+    title: "Klinik Konstruksi Case B: Tender & Kinerja Proyek",
+    desc: "Intervensi ahli untuk kasus gugur tender, NCR, insiden K3, EVM merah, dan klaim force majeure.",
+    features: ["Mitigasi NCR", "Analisa EVM", "Strategi Tender", "Insiden K3"],
+    price: "Rp 2.500.000",
+    icon: "Activity",
+    type: "clinic",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/klinik-konstruksi-case-b-tender-kinerja-proyek"
+  },
+  {
+    id: 24,
+    category: "Klinik Konstruksi",
+    title: "Klinik Konstruksi Case C: Sengketa & Klaim",
+    desc: "Pendampingan hukum dan teknis untuk sengketa kontrak, FIDIC, surat sanggah, somasi subkon, dan klaim asuransi.",
+    features: ["Bedah FIDIC", "Surat Sanggah", "Somasi Subkon", "Klaim Asuransi"],
+    price: "Rp 5.000.000",
+    icon: "Scale",
+    type: "clinic",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/klinik-konstruksi-case-c-sengketa-klaim"
+  },
+  {
+    id: 25,
+    category: "Storage",
+    title: "Storage Add-On 10 GB (3 Bulan)",
+    desc: "Tambahan ruang simpan aman 10 GB di server Gustafta. Termasuk kuota 200 chat AI per bulan.",
+    features: ["10 GB Aman", "200 Chat/bln", "Aktif 3 Bulan", "Backup Harian"],
+    price: "Rp 99.000/3bln",
+    icon: "HardDrive",
+    type: "addon",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/storage-add-on-10-gb-3-bulan-200-chat-bln"
+  },
+  {
+    id: 26,
+    category: "Storage",
+    title: "Storage Add-On 50 GB (3 Bulan)",
+    desc: "Tambahan ruang simpan masif 50 GB untuk arsip proyek besar. Termasuk kuota 600 chat AI per bulan.",
+    features: ["50 GB Masif", "600 Chat/bln", "Aktif 3 Bulan", "Prioritas Support"],
+    price: "Rp 299.000/3bln",
+    icon: "Database",
+    type: "addon",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/storage-add-on-50-gb-3-bulan-600-chat-bln"
+  }
+```
+
+### 🚨 Checklist Eksekusi di Replit:
+1. **Paste & Comma:** Pastikan produk lama di urutan paling bawah (ID 16) memiliki tanda koma `,` di akhirnya sebelum produk ID 17 dimulai.
+2. **Save & Run:** Biarkan Replit hot-reload. Tidak perlu restart manual.
+3. **Cek UI:** Buka `gaia.dokumenproyek.com`. Pastikan badge **"Case-Based"** otomatis muncul di 3 kartu Klinik Konstruksi (Case A, B, C).
+4. **Uji Checkout:** Klik produk **Ebook LKUT (Rp 150.000)**, pastikan tombol "Bayar via Payment Link" aktif dan melempar Bos ke dashboard Scalev.
+
+---
+
+**Langkah selanjutnya kita mau ke mana, Bos?** 
+1. 🎨 **Upload 10 Ilustrasi** ke Dashboard Scalev (mapping gambar ke masing-masing link)?
+2. 🌊 **Gas ke Wave 2** (Racik 7 produk tambahan: Chatbot AI, Klinik Durasi, Brain Project, dll)?
+3. 🤖 **Upgrade LKUT Simulator** jadi Salesman Otomatis (logic rekomendasi produk Gaia)?
+
+Pilih angka atau kasih instruksi bebas, saya standby! 🔥
