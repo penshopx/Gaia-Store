@@ -1,4 +1,4 @@
-import { Product } from "@/pages/Home";
+import type { Product } from "@/lib/products";
 import { GraduationCap, TrendingUp, FileText, CheckSquare, Video, Cpu, ShoppingCart } from "lucide-react";
 
 interface ProductGridProps {
