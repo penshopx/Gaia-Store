@@ -3,6 +3,7 @@ export type Product = {
   category: string;
   title: string;
   desc: string;
+  features?: string[];
   price: string;
   icon: string;
   scalev_payment_link?: string;
@@ -13,7 +14,14 @@ export const productsData: Product[] = [
     id: 1,
     category: "Bimtek & PUB",
     title: "Paket Bimtek Online: SMAP & ISO 9001 (Syarat Grade AAA)",
-    desc: "Pelatihan 3 hari + sertifikat. Penuhi aspek Kesehatan Organisasi LKUT.",
+    desc: "Pelatihan HYBRID (Online + Tatap Muka Terbatas) 3 hari. Materi intensif via Zoom + sesi networking offline (opsional). Sertifikat resmi. Memenuhi syarat Aspek Kesehatan Organisasi LKUT untuk Grade AAA.",
+    features: [
+      "Format Hybrid (Online + Offline Opsional)",
+      "3 Hari Pelatihan Intensif via Zoom",
+      "Sesi Networking Offline (Opsional)",
+      "Sertifikat Resmi",
+      "Memenuhi Syarat Aspek Kesehatan Organisasi LKUT Grade AAA",
+    ],
     price: "Rp 1.500.000/peserta",
     icon: "GraduationCap",
     scalev_payment_link:
