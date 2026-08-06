@@ -53,7 +53,7 @@ export const productsData: Product[] = [
     desc: "Format isian LKUT lengkap + checklist kepatuhan SBU/SMAP/pengalaman proyek.",
     price: "Rp 350.000",
     icon: "CheckSquare",
-    // No payment link yet — WhatsApp fallback
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/paket-template-lkut-checklist-sijkt",
   },
   {
     id: 5,
@@ -72,6 +72,6 @@ export const productsData: Product[] = [
     desc: "Deteksi pasal jebakan & buat somasi/sanggah dalam 3 menit.",
     price: "Rp 150.000/dokumen",
     icon: "Cpu",
-    // No payment link yet — WhatsApp fallback
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/lexcom-ai-bedah-kontrak",
   },
 ];
