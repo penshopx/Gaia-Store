@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Gaia Store"
+description = "Gaia Store — a premium B2B digital marketplace for the Indonesian construction industry, part of the DokumenProyek.com ecosystem. Features product listings (Bimtek, Templates, Microlearning, AI Tools), a WhatsApp-based checkout modal, and all UI in formal professional Indonesian."
+version = "1.0.0"
+id = "artifacts/gaia-store"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18830
+
+[services.development]
+run = "pnpm --filter @workspace/gaia-store run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/gaia-store", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/gaia-store/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18830"
+BASE_PATH = "/"

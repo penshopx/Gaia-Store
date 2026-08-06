@@ -1,0 +1,36 @@
+Build "Gaia Store", a premium B2B digital marketplace for the Indonesian construction industry, part of the DokumenProyek.com ecosystem. Visual identity: Navy #0F172A, Gold #F59E0B, Inter font, corporate B2B SaaS style. All UI text in formal professional Indonesian.
+
+## NAVBAR
+- Logo "DokumenProyek" + gold badge "Gaia Store"
+- Links: Kategori, Bimtek & PUB, Template, AI Tools
+- Right: gold button "Cek Grade LKUT" linking to https://lkut.dokumenproyek.com + "Masuk" button
+- "Kembali ke Hub" link to https://dokumenproyek.com
+
+## HERO
+- Headline: "Supermarket Digital & Edukasi Konstruksi Terlengkap"
+- Sub: "Dongkrak Grade LKUT, amankan poin PKB, dan menangkan tender dengan template, bimtek, dan AI tools standar LPJK & Permen PUPR 7/2024."
+- Search bar + category pills: Semua, Bimtek & PUB, Template SOP & ISO, Microlearning PKB, AI Tools.
+
+## PRODUCT GRID (6 anchor products referenced by our LKUT Simulator proposals):
+1. Tag "Bimtek & PUB" | "Paket Bimtek Online: SMAP & ISO 9001 (Syarat Grade AAA)" | "Pelatihan 3 hari + sertifikat. Penuhi aspek Kesehatan Organisasi LKUT." | Rp 1.500.000/peserta
+2. Tag "Bimtek & PUB" | "Bimtek PUB Khusus: Pendongkrak Grade B/C/D ke A" | "Modul peningkatan kinerja BUJK sesuai Permen PUPR 7/2024: keuangan, organisasi, operasi, SDM, SMAP." | Rp 2.000.000/peserta
+3. Tag "Template" | "Master Template SOP & Manual Mutu ISO 9001 Konstruksi" | "Dokumen siap pakai standar KAN & audit LPJK. Format Word/Excel editable." | Rp 450.000
+4. Tag "Template" | "Paket Template LKUT + Checklist Kepatuhan SIJKT" | "Format isian LKUT lengkap + checklist kepatuhan SBU/SMAP/pengalaman proyek." | Rp 350.000
+5. Tag "Microlearning PKB" | "Akses 1 Tahun: Modul Microlearning PKB (SKK Jenjang 7-9)" | "Video + quiz untuk mengejar poin PKB perpanjangan SKK Ahli." | Rp 299.000/tahun
+6. Tag "AI Tools" | "LexCom AI: Bedah Kontrak & Generator Surat Sanggah" | "Deteksi pasal jebakan & buat somasi/sanggah dalam 3 menit." | Rp 150.000/dokumen
+
+Each card: thumbnail placeholder, tag, title, description, price, "Beli Sekarang" button, hover lift.
+
+## CHECKOUT (MVP — WhatsApp order):
+- "Beli Sekarang" opens a modal: product summary + total + inputs (Nama Perusahaan, Nama PIC, No WhatsApp).
+- Primary button "Checkout via WhatsApp": opens wa.me/<ADMIN_WA_NUMBER> with encoded pre-filled text: "Halo Admin Gaia Store, saya mau memesan [PRODUCT] (Rp [PRICE]). Perusahaan: [X], PIC: [Y], WA: [Z]."
+- Store ADMIN_WA_NUMBER in ONE config file lib/config.ts (set to "628xxxxxxxxxx" as placeholder for me to change).
+- Secondary button "Bayar via Payment Link" (disabled, tooltip "Segera").
+
+## TRUST & FOOTER
+- Badges: "Akses Instan Setelah Pembayaran", "Materi Update Regulasi Terkini", "CS Responsif".
+- Footer: "© 2026 DokumenProyek.com" + "Powered by Gustafta AI Engine".
+
+## TECHNICAL
+- Next.js App Router, Tailwind, Lucide React. Fully responsive. Clean components (Navbar, Hero, ProductCard, CheckoutModal, Footer). Properly encode WhatsApp URI.
+Build the complete app now, production-ready.
