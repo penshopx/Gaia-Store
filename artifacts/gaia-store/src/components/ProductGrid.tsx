@@ -3,6 +3,7 @@ import {
   GraduationCap, TrendingUp, FileText, CheckSquare, Video, Cpu,
   ShoppingCart, CheckCircle2, Search, Brain, BookOpen, FileCheck,
   BarChart2, Stethoscope, Activity, Scale, HardDrive, Database,
+  Wrench, ClipboardCheck, Handshake, Shield,
 } from "lucide-react";
 
 interface ProductGridProps {
@@ -26,6 +27,10 @@ const iconMap: Record<string, React.ElementType> = {
   Scale,
   HardDrive,
   Database,
+  Wrench,
+  ClipboardCheck,
+  Handshake,
+  Shield,
 };
 
 export default function ProductGrid({ products, onBuy }: ProductGridProps) {
