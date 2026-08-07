@@ -1,0 +1,110 @@
+  // ==========================================
+  // WAVE 2, HIGH-TICKET & INTEL PASAR (ID 27 - 52)
+  // Link Scalev sudah ter-wire sempurna
+  // ==========================================
+  {
+    id: 27,
+    category: "AI Tools",
+    title: "Chatbot AI Spesialis (ISO/Tender/K3)",
+    desc: "Sewa AI Tutor spesialis yang siap menjawab pertanyaan teknis seputar ISO, Tender, dan K3 selama 24/7.",
+    features: ["Akses 24/7", "Spesialis Konstruksi", "Update Materi", "Chat Tanpa Batas"],
+    price: "Rp 150.000/bln",
+    icon: "Cpu",
+    type: "digital",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/chatbot-ai-spesialis-iso-tender-k3"
+  },
+  {
+    id: 28,
+    category: "Klinik Konstruksi",
+    title: "Klinik Konstruksi Retainer 1 Bulan",
+    desc: "Pendampingan intensif multi-cases selama 1 bulan penuh untuk memastikan kepatuhan dan kinerja proyek Anda.",
+    features: ["Akses Multi-Case", "Review Mingguan", "Prioritas Respon", "Laporan Bulanan"],
+    price: "Rp 3.000.000/bln",
+    icon: "Stethoscope",
+    type: "clinic",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/klinik-konstruksi-retainer-1-bulan"
+  },
+  {
+    id: 29,
+    category: "Klinik Konstruksi",
+    title: "Klinik Konstruksi Retainer 6 Bulan",
+    desc: "Paket retainer eksklusif 6 bulan. Solusi jangka panjang untuk mitigasi risiko dan pendampingan hukum proyek.",
+    features: ["Hemat 20%", "Strategic Partner", "Audit Berkala", "Dedicated Support"],
+    price: "Rp 15.000.000/6bln",
+    icon: "Activity",
+    type: "clinic",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/klinik-konstruksi-retainer-6-bulan"
+  },
+  {
+    id: 30,
+    category: "Klinik Konstruksi",
+    title: "Klinik AI: Setup & Training Brain Project (Perusahaan)",
+    desc: "Jasa konsultansi, setup, dan pelatihan sistem AI Premium (Orchestrator + Specialists) khusus untuk perusahaan konstruksi. Kami dampingi tim Anda hingga mahir menggunakan AI.",
+    features: ["Setup AI Orchestrator", "Training Staf Perusahaan", "Custom Workflow", "Support Prioritas 1 Bln"],
+    price: "Rp 3.500.000",
+    icon: "Brain",
+    type: "clinic",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/brain-project-setup-ai-premium"
+  },
+  {
+    id: 31,
+    category: "Tender & Legal",
+    title: "Executive Summary Dokumen Proyek",
+    desc: "Ringkasan eksekutif dari dokumen proyek/tender tebal Anda. Memudahkan direksi mengambil keputusan cepat.",
+    features: ["Bedah Dokumen Tebal", "Poin Krusial", "Format Presentasi", "Analisa Risiko"],
+    price: "Rp 250.000",
+    icon: "FileText",
+    type: "digital",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/exec-summary-dokumen-proyek"
+  },
+  {
+    id: 32,
+    category: "Template",
+    title: "Template SMAP (ISO 37001 Anti Penyuapan)",
+    desc: "Template lengkap Sistem Manajemen Anti Penyuapan. Siap pakai untuk memenuhi syarat tender BUMN dan pemerintah.",
+    features: ["Manual Mutu SMAP", "Prosedur & Form", "Audit Checklist", "Sesuai ISO 37001"],
+    price: "Rp 450.000",
+    icon: "FileCheck",
+    type: "digital",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/template-smap-iso-37001"
+  },
+  {
+    id: 33,
+    category: "Tender & Legal",
+    title: "Paket Anti-Gugur Tender: SMKK/RKK + Surat Sanggah",
+    desc: "Paket lengkap perlindungan tender. Dapatkan Template RKK/SMKK sesuai standar PUPR terbaru sekaligus draf Surat Sanggah & Sanggah Banding yang tajam dan legal dalam satu paket hemat.",
+    features: ["Template RKK Siap Tender", "Dokumen SMKK Lengkap", "Draf Surat Sanggah Legal", "Cheat Sheet Pasal Tender"],
+    price: "Rp 550.000",
+    icon: "FileText",
+    type: "digital",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/paket-anti-gugur-tender-smkk-sanggah"
+  },
+  {
+    id: 34,
+    category: "SKK & PKB",
+    title: "Paket Tuntas PKB SKK - Jenjang 7 (100 Poin)",
+    desc: "Solusi terima beres pemenuhan 100 poin PKB untuk perpanjangan SKK Jenjang 7. Kombinasi cerdas Executive Summary dan akses Video/LMS. Anda fokus bekerja, kami yang urus LPJK.",
+    features: ["Target 100 Poin", "Termasuk Video/LMS", "Submit App LPJK", "Garansi Tuntas"],
+    price: "Rp 1.500.000",
+    icon: "GraduationCap",
+    type: "clinic",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/paket-tuntas-pkb-skk-jenjang-7"
+  },
+  {
+    id: 35,
+    category: "SKK & PKB",
+    title: "Paket Tuntas PKB SKK - Jenjang 8 (150 Poin)",
+    desc: "Solusi terima beres pemenuhan 150 poin PKB untuk perpanjangan SKK Jenjang 8. Kami amankan poin Anda dari matriks pengalaman dan pembelajaran tanpa perlu pusing hitung manual.",
+    features: ["Target 150 Poin", "Termasuk Video/LMS", "Submit App LPJK", "Prioritas Pengerjaan"],
+    price: "Rp 1.800.000",
+    icon: "GraduationCap",
+    type: "clinic",
+    scalev_payment_link: "https://bayar.gustafta.my.id/p/paket-tuntas-pkb-skk-jenjang-8"
+  },
+  {
+    id: 36,
+    category: "SKK & PKB",
+    title: "Paket Tuntas PKB SKK - Jenjang 9 (200 Poin)",
+    desc: "Layanan VVIP terima beres pemenuhan 200 poin PKB untuk perpanjangan SKK Jenjang 9. Didampingi konsultan dedicated hingga SKK Anda siap diperpanjang tanpa hambatan.",
+    features: ["Target 200 Poin", "Termasuk Video/LMS", "Submit App LPJK", "Konsultan Dedicated"],
+    price: "Rp 2.500.000
