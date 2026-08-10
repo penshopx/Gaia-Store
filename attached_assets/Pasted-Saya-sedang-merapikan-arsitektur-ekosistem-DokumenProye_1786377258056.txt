@@ -1,0 +1,190 @@
+Saya sedang merapikan arsitektur ekosistem DokumenProyek.com dan Gaia Store.
+
+UNTUK TAHAP INI JANGAN MENGUBAH KODE APA PUN.
+
+Jangan refactor.
+Jangan membuat database baru.
+Jangan menghapus data.
+Jangan mengubah routing.
+Jangan mengubah domain.
+Jangan mengubah environment variables.
+Jangan melakukan deployment.
+
+Tugas Anda hanya melakukan AUDIT terhadap aplikasi Gaia Store yang saat ini berjalan.
+
+Konteks arsitektur:
+
+Gaia Store adalah gerai AI Specialist di dalam ekosistem DokumenProyek.com.
+
+Domain utama:
+dokumenproyek.com
+
+Gaia Store menggunakan subdomain DokumenProyek.
+
+Gaia Store TIDAK dimaksudkan menjadi salinan seluruh Gustafta Store.
+
+Gustafta.my.id tetap menjadi marketplace AI yang lebih luas dan dapat memiliki ratusan chatbot.
+
+Gaia Store hanya menampilkan AI Specialist yang:
+
+* relevan dengan konstruksi;
+* relevan dengan produk utama Gaia SIAP;
+* atau memiliki hubungan strategis dengan DP Store.
+
+Contoh:
+
+* Gaia SKK
+* Gaia PKB
+* Gaia ExSum
+* Gaia SBU
+* Gaia Legal
+* Gaia Tender
+* Gaia Contract
+* Gaia Project
+* Gaia Cash Flow
+* AI Specialist konstruksi lainnya.
+
+AI Specialist tertentu dapat sebenarnya berjalan di Gustafta.my.id.
+
+Untuk tahap awal, hubungan Gaia Store → Gustafta dapat berupa deep link/URL. Kita belum ingin membuat integrasi API kompleks sebelum audit selesai.
+
+AUDIT HAL BERIKUT:
+
+A. Struktur aplikasi
+
+* framework
+* folder structure
+* frontend
+* backend
+* API
+* routing
+* komponen utama
+
+B. Product Catalog
+
+* bagaimana produk disimpan
+* product ID
+* product name
+* category
+* price
+* status
+* metadata
+* hubungan produk dengan chatbot
+
+C. Katalog saat ini
+Tampilkan daftar produk/AI yang saat ini ada dan klasifikasikan secara awal:
+
+* Construction AI
+* General AI
+* Unknown
+
+Jangan mengubah klasifikasi secara otomatis.
+
+D. Gustafta Integration
+Cari apakah sudah ada:
+
+* URL Gustafta
+* deep link
+* API
+* webhook
+* authentication bridge
+* product mapping
+* chatbot ID
+* environment variable terkait Gustafta
+
+Jangan tampilkan secret/API key. Sebutkan nama environment variable saja.
+
+E. Payment
+
+* payment gateway
+* checkout
+* webhook
+* order status
+* access/entitlement setelah pembayaran
+
+F. Authentication
+
+* user ID
+* email
+* session
+* customer identity
+
+G. Domain
+
+* domain
+* subdomain
+* DNS-related configuration yang terlihat dari aplikasi
+* hardcoded URLs
+
+H. UI/UX
+
+* halaman katalog
+* product detail
+* CTA
+* checkout
+* navigation
+* status produk
+
+I. Database
+
+* tabel/collection
+* struktur produk
+* user
+* order
+* payment
+* category
+* mapping chatbot
+
+J. Risiko
+Cari:
+
+* duplikasi catalog
+* hardcoded chatbot
+* hardcoded URL
+* integrasi rapuh
+* database duplication
+* authentication duplication
+
+K. Rekomendasi arsitektur ke depan
+
+Target konsep:
+
+Gaia Store
+↓
+Curated Construction AI Catalog
+↓
+Gustafta AI Specialist
+↓
+Optional Gaia SIAP workflow
+↓
+Optional DP Store human execution
+
+PENTING:
+
+Untuk saat ini:
+
+* jangan coding
+* jangan refactor
+* jangan migration
+* jangan mengubah database
+* jangan mengubah environment
+* jangan deployment
+
+Saya hanya membutuhkan AUDIT KONDISI AKTUAL.
+
+FORMAT:
+
+1. Executive Summary
+2. Current Architecture
+3. Current Product Catalog
+4. Product Data Structure
+5. Gustafta Integration
+6. Authentication
+7. Payment
+8. Database
+9. Domain
+10. UI/UX
+11. Problems
+12. Recommended Architecture
+13. Critical Issues
+14. Next Steps
