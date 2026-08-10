@@ -1,0 +1,483 @@
+# GAIA × GUSTAFTA CATALOG — READ-ONLY INTEGRATION AUDIT
+
+Lakukan audit READ-ONLY terhadap integrasi GAIA Store dengan Gustafta Catalog API.
+
+## ATURAN WAJIB
+
+* Jangan mengubah source code.
+* Jangan mengubah database.
+* Jangan membuat/menghapus/mengedit product.
+* Jangan membuat/menghapus/mengedit package.
+* Jangan mengubah environment variable.
+* Jangan melakukan migration.
+* Jangan melakukan deployment.
+* Jangan melakukan publish/sync yang mengubah data.
+* Jangan melakukan checkout/payment transaction.
+* Jangan melakukan tindakan irreversible apa pun.
+
+Tujuan audit hanya untuk mengetahui kondisi aktual sistem sebelum kita membuat 6 launch packages.
+
+---
+
+## 1. AUDIT CATALOG API PRODUCTION
+
+Periksa endpoint production:
+
+`GET /api/v1/catalog/solutions`
+
+`GET /api/v1/catalog/sectors`
+
+`GET /api/v1/catalog/tiers`
+
+`GET /api/v1/catalog/products`
+
+`GET /api/v1/catalog/packages`
+
+Catat untuk masing-masing:
+
+* HTTP status
+* jumlah record
+* field/schema yang dikembalikan
+* contoh struktur JSON
+* identifier masing-masing record
+* apakah data berasal dari production atau cache
+* timestamp/last updated jika tersedia
+
+Jangan mengubah data.
+
+---
+
+# 2. AUDIT 9 SOLUTIONS
+
+Ambil seluruh 9 solution.
+
+Tampilkan:
+
+| ID | Name | Slug/Code | Status | Keterangan |
+| -- | ---- | --------- | ------ | ---------- |
+
+Jangan membuat asumsi.
+
+Gunakan nama dan ID aktual dari API.
+
+---
+
+# 3. AUDIT 7 SECTORS
+
+Ambil seluruh sector.
+
+Tampilkan:
+
+| ID | Name | Slug/Code | Status |
+| -- | ---- | --------- | ------ |
+
+Tujuan:
+
+Menentukan sector aktual yang bisa digunakan oleh package.
+
+---
+
+# 4. AUDIT 3 TIERS
+
+Ambil seluruh tier.
+
+Tampilkan:
+
+| ID | Name | Slug/Code | Status | Deskripsi |
+| -- | ---- | --------- | ------ | --------- |
+
+PENTING:
+
+Jangan mengasumsikan bahwa tier:
+
+* Basic
+* Professional
+* Business
+
+adalah nama aktual.
+
+Gunakan data production.
+
+---
+
+# 5. AUDIT PRODUCT REGISTRY
+
+Ambil seluruh 14 product yang ada.
+
+Untuk setiap product tampilkan:
+
+| ID | Name | Product Type | Status | Price | Visibility | Gaia Enabled |
+| -- | ---- | ------------ | ------ | ----: | ---------- | ------------ |
+
+Kemudian identifikasi:
+
+* product mana yang cocok sebagai building block SBU
+* product mana yang cocok untuk Tender
+* product mana yang cocok untuk Dokumen Proyek
+* product mana yang cocok untuk Legalitas/OSS
+* product mana yang cocok untuk ISO/Compliance
+* product mana yang cocok untuk Business Memory
+
+JANGAN membuat product baru.
+
+Jika suatu capability tidak tersedia sebagai product registry, tuliskan:
+
+`NOT FOUND`
+
+Jangan mengarang nama product.
+
+---
+
+# 6. AUDIT PACKAGE SCHEMA
+
+Periksa endpoint:
+
+`GET /api/v1/catalog/packages`
+
+Karena saat ini kemungkinan masih 0 package, jangan membuat package.
+
+Cari schema/interface/model/backend contract yang digunakan untuk package.
+
+Tentukan apakah package mendukung field berikut:
+
+* id / packageId
+* name
+* description
+* price
+* monthlyPrice
+* currency
+* status
+* visibility
+* gaia_enabled
+* solution_id
+* sector_id
+* tier_id
+* duration
+* duration_months
+* products[]
+* product_id
+* access_level
+* usage_limit
+* version
+* snapshot
+* checkout_url
+* payment_url
+* external_payment_link
+
+Untuk setiap field, beri status:
+
+`SUPPORTED`
+
+`NOT SUPPORTED`
+
+atau
+
+`UNKNOWN`
+
+Jika field memiliki nama berbeda, tuliskan nama aktualnya.
+
+---
+
+# 7. AUDIT ADMIN REGISTRY
+
+Periksa `/admin-registry`.
+
+Secara READ-ONLY tentukan:
+
+### Products
+
+Apakah admin dapat:
+
+* create
+* edit
+* publish
+* set price
+* set visibility
+* set gaia_enabled
+
+### Packages
+
+Apakah admin dapat:
+
+* create package
+* select solution
+* select sector
+* select tier
+* select duration
+* set price
+* add products
+* set access level
+* set usage limit
+* publish package
+* enable Gaia
+
+Catat nama field dan UI control aktual.
+
+---
+
+# 8. AUDIT GAIA PREVIEW
+
+Periksa bagaimana GAIA Preview menentukan eligibility.
+
+Cari logic yang digunakan untuk:
+
+* status
+* price
+* visibility
+* gaia_enabled
+* composition
+* solution
+* sector
+* tier
+
+Jelaskan kondisi minimum agar package dianggap:
+
+`ELIGIBLE FOR GAIA`
+
+Jangan mengubah logic tersebut.
+
+---
+
+# 9. AUDIT GAIA STORE
+
+Periksa bagaimana GAIA Store menggunakan Catalog API.
+
+Audit:
+
+`/solusi`
+
+`/paket/:id`
+
+`/produk`
+
+Cari:
+
+* endpoint yang dipanggil
+* field yang digunakan
+* filtering
+* sorting
+* caching
+* fallback
+* error handling
+
+Khusus `/paket/:id`, pastikan apakah halaman tersebut membutuhkan:
+
+* package ID
+* product composition
+* solution
+* sector
+* tier
+* price
+* checkout URL
+
+---
+
+# 10. AUDIT CHECKOUT
+
+Cari implementasi checkout/payment yang sudah tersedia di GAIA Store atau Gustafta.
+
+Identifikasi:
+
+* payment provider
+* endpoint/API
+* checkout page
+* payment link
+* package/product identifier
+* success callback
+* webhook
+* provisioning/access mechanism
+
+Jangan melakukan transaksi.
+
+Jangan membuat payment link.
+
+Jangan mengubah payment configuration.
+
+Jawab secara eksplisit:
+
+### Apakah package Catalog saat ini sudah memiliki mekanisme checkout?
+
+`YES / NO / PARTIAL`
+
+Jika PARTIAL, jelaskan gap-nya.
+
+---
+
+# 11. AUDIT PACKAGE → CHECKOUT FLOW
+
+Gambarkan flow aktual saat ini.
+
+Contoh format:
+
+GAIA `/solusi`
+
+↓
+
+Select Package
+
+↓
+
+`/paket/:id`
+
+↓
+
+Checkout
+
+↓
+
+Payment
+
+↓
+
+Webhook
+
+↓
+
+Provisioning
+
+Tetapi gunakan flow AKTUAL berdasarkan codebase.
+
+Jika ada bagian yang belum tersedia, tandai:
+
+`MISSING`
+
+---
+
+# 12. COMPATIBILITY CHECK — 6 LAUNCH PACKAGES
+
+Setelah seluruh audit selesai, evaluasi apakah struktur berikut compatible dengan sistem:
+
+1. Gustafta SBU — Rp750.000/month
+2. Gustafta Tender — Rp1.000.000/month
+3. Gustafta Dokumen Proyek — Rp1.000.000/month
+4. Gustafta Legalitas & OSS — Rp750.000/month
+5. Gustafta ISO & Compliance — Rp1.500.000/month
+6. Gustafta Business Memory — Rp2.500.000/month
+
+Untuk masing-masing beri:
+
+`READY`
+
+`READY WITH MAPPING`
+
+atau
+
+`BLOCKED`
+
+Jelaskan alasannya.
+
+---
+
+# 13. JANGAN MEMBUAT REKOMENDASI HARGA BARU
+
+Harga di atas adalah working proposal.
+
+Jangan mengubah harga.
+
+Jangan membuat package.
+
+Jangan publish.
+
+Audit compatibility saja.
+
+---
+
+# 14. FINAL REPORT
+
+Berikan laporan akhir dengan struktur:
+
+## A. SYSTEM STATUS
+
+Catalog API:
+GAIA Store:
+Admin Registry:
+GAIA Preview:
+Checkout:
+
+## B. ACTUAL CATALOG
+
+9 Solutions:
+7 Sectors:
+3 Tiers:
+14 Products:
+Current Packages:
+
+## C. PRODUCT → PACKAGE MAPPING
+
+| Package | Actual Product IDs | Missing Capability |
+| ------- | ------------------ | ------------------ |
+
+Gunakan PRODUCT ID aktual.
+
+## D. PACKAGE SCHEMA COMPATIBILITY
+
+| Required Field | Actual Field | Status |
+| -------------- | ------------ | ------ |
+
+## E. TIER MAPPING
+
+| Package | Recommended Actual Tier | Reason |
+| ------- | ----------------------- | ------ |
+
+Jangan membuat tier baru.
+
+## F. SECTOR MAPPING
+
+| Package | Actual Sector | Reason |
+| ------- | ------------- | ------ |
+
+Jangan membuat sector baru.
+
+## G. CHECKOUT GAP
+
+Jelaskan secara konkret apakah package dapat dibeli sekarang.
+
+## H. GAIA SYNC READINESS
+
+Berikan:
+
+`READY`
+
+`READY WITH FIXES`
+
+atau
+
+`BLOCKED`
+
+## I. REQUIRED ACTIONS
+
+Pisahkan:
+
+### DATA CONFIGURATION
+
+Hal yang cukup dilakukan melalui Admin Registry.
+
+### CODE CHANGES
+
+Hal yang benar-benar membutuhkan perubahan code.
+
+### PAYMENT / CHECKOUT
+
+Hal yang membutuhkan konfigurasi payment.
+
+### DO NOT TOUCH
+
+Bagian yang sudah benar dan tidak perlu diubah.
+
+---
+
+## IMPORTANT
+
+Ini adalah audit READ-ONLY.
+
+Pada akhir pekerjaan, pastikan:
+
+* database tidak berubah
+* source code tidak berubah
+* environment variable tidak berubah
+* package tidak dibuat
+* product tidak dibuat
+* package tidak dipublish
+* Gaia tidak di-sync dengan perubahan data
+
+Hanya berikan laporan hasil audit dan bukti dari code/API yang ditemukan.
