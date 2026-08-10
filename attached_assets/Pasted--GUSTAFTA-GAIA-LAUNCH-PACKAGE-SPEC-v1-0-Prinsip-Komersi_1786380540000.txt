@@ -1,0 +1,525 @@
+# GUSTAFTA GAIA — LAUNCH PACKAGE SPEC v1.0
+
+## Prinsip Komersial
+
+Gustafta tidak menjual token, prompt, jumlah fitur, atau sekadar chatbot.
+
+Gustafta menjual **kemampuan menyelesaikan pekerjaan tertentu**.
+
+Struktur:
+
+**Product Registry**
+→ building blocks / capability
+
+**Package Registry**
+→ solusi yang dibeli customer
+
+**GAIA**
+→ memilih dan menawarkan solusi yang sesuai dengan kebutuhan customer
+
+---
+
+# 1. PAKET SBU
+
+### Nama
+
+**Gustafta SBU**
+
+### Positioning
+
+Solusi AI untuk membantu perusahaan memahami, mempersiapkan, dan mengelola kebutuhan SBU.
+
+### Target
+
+* Kontraktor
+* Konsultan
+* Perusahaan konstruksi
+* Biro jasa
+* Perusahaan yang sedang mempersiapkan kebutuhan SBU
+
+### Capability / Product Member
+
+1. Klinik Konsultasi
+2. Bedah Dokumen
+3. SBU Toolkit
+4. Jasa Dokumen
+
+### Access Level
+
+* Klinik Konsultasi → FULL
+* Bedah Dokumen → FULL
+* SBU Toolkit → FULL
+* Jasa Dokumen → LIMITED
+
+### Harga Launch
+
+**Rp750.000 / bulan**
+
+### Positioning harga
+
+Paket kecil–menengah dengan nilai langsung terhadap kebutuhan administrasi dan kesiapan perusahaan.
+
+### Gaia
+
+`gaia_enabled = true`
+`visibility = PUBLIC`
+`status = ACTIVE` setelah QA
+
+---
+
+# 2. PAKET TENDER
+
+### Nama
+
+**Gustafta Tender**
+
+### Positioning
+
+Solusi AI untuk membantu perusahaan membaca, menganalisis, dan mempersiapkan dokumen tender/proyek.
+
+### Target
+
+* Kontraktor
+* Konsultan
+* Biro jasa tender
+* Procurement/project team
+
+### Capability / Product Member
+
+* Klinik Tender
+* Bedah Dokumen
+* Tender Toolkit
+* Generator Dokumen Tender
+
+### Access Level
+
+* Klinik Tender → FULL
+* Bedah Dokumen → FULL
+* Tender Toolkit → FULL
+* Generator Dokumen Tender → LIMITED
+
+### Harga Launch
+
+**Rp1.000.000 / bulan**
+
+### Gaia
+
+`gaia_enabled = true`
+`visibility = PUBLIC`
+`status = ACTIVE` setelah QA
+
+---
+
+# 3. PAKET DOKUMEN PROYEK
+
+### Nama
+
+**Gustafta Dokumen Proyek**
+
+### Positioning
+
+Solusi untuk membantu perusahaan menyiapkan, memeriksa, dan mengembangkan dokumen yang dibutuhkan dalam pekerjaan/proyek.
+
+### Target
+
+* Kontraktor
+* Konsultan
+* Project manager
+* Admin proyek
+* Biro jasa dokumen
+
+### Capability / Product Member
+
+* Klinik Dokumen
+* Bedah Dokumen
+* Document AI
+* Generator Dokumen
+* Project Toolkit
+
+### Access Level
+
+* Klinik Dokumen → FULL
+* Bedah Dokumen → FULL
+* Document AI → FULL
+* Generator Dokumen → LIMITED
+* Project Toolkit → FULL
+
+### Harga Launch
+
+**Rp1.000.000 / bulan**
+
+### Gaia
+
+`gaia_enabled = true`
+`visibility = PUBLIC`
+`status = ACTIVE` setelah QA
+
+---
+
+# 4. PAKET LEGALITAS & OSS
+
+### Nama
+
+**Gustafta Legalitas & OSS**
+
+### Positioning
+
+Solusi AI untuk membantu perusahaan memahami, memeriksa, dan mempersiapkan kebutuhan legalitas serta OSS.
+
+### Target
+
+* UMKM
+* Kontraktor
+* Konsultan
+* Perusahaan baru
+* Biro jasa
+
+### Capability / Product Member
+
+* Klinik Legalitas
+* Legal Document AI
+* Legalitas Toolkit
+* OSS Assistant
+* Generator Dokumen Legal
+
+### Access Level
+
+* Klinik Legalitas → FULL
+* Legal Document AI → FULL
+* Legalitas Toolkit → FULL
+* OSS Assistant → FULL
+* Generator Dokumen Legal → LIMITED
+
+### Harga Launch
+
+**Rp750.000 / bulan**
+
+### Catatan
+
+Untuk launch, **Legalitas + OSS dijadikan satu package secara komersial**, tetapi capability-nya tetap dipisahkan di dalam registry.
+
+Ini membuat customer mendapatkan satu solusi yang jelas tanpa membuat catalog terlalu terfragmentasi.
+
+### Gaia
+
+`gaia_enabled = true`
+`visibility = PUBLIC`
+`status = ACTIVE` setelah QA
+
+---
+
+# 5. PAKET ISO & COMPLIANCE
+
+### Nama
+
+**Gustafta ISO & Compliance**
+
+### Positioning
+
+Solusi AI untuk membantu perusahaan memahami persyaratan, menyiapkan dokumen, melakukan gap analysis, dan menjaga kesiapan compliance.
+
+### Target
+
+* Perusahaan yang sedang persiapan ISO
+* Kontraktor
+* Konsultan
+* Perusahaan menengah
+* Compliance team
+
+### Capability / Product Member
+
+* Compliance Consultation
+* Compliance Document AI
+* Gap Assessment
+* ISO Toolkit
+* Document Generator
+
+### Access Level
+
+* Consultation → FULL
+* Compliance Document AI → FULL
+* Gap Assessment → FULL
+* ISO Toolkit → FULL
+* Document Generator → LIMITED
+
+### Harga Launch
+
+**Rp1.500.000 / bulan**
+
+### Positioning harga
+
+Lebih tinggi karena nilai pekerjaan dan risiko bisnis yang ditangani lebih besar dibanding paket administrasi dasar.
+
+### Gaia
+
+`gaia_enabled = true`
+`visibility = PUBLIC`
+`status = ACTIVE` setelah QA
+
+---
+
+# 6. PAKET BUSINESS MEMORY
+
+### Nama
+
+**Gustafta Business Memory**
+
+### Positioning
+
+Ruang kerja AI yang membantu perusahaan menyimpan, memahami, dan menggunakan kembali pengetahuan serta dokumen bisnis.
+
+### Target
+
+* Perusahaan
+* Tim proyek
+* Konsultan
+* Owner
+* Management
+* Perusahaan yang ingin membangun institutional memory
+
+### Capability / Product Member
+
+* Business Memory
+* Knowledge Base
+* Document AI
+* AI Workspace
+* Project Brain
+* Specialist AI
+
+### Access Level
+
+* Business Memory → FULL
+* Knowledge Base → FULL
+* Document AI → FULL
+* AI Workspace → FULL
+* Project Brain → FULL
+* Specialist AI → LIMITED
+
+### Harga Launch
+
+**Rp2.500.000 / bulan**
+
+### Positioning harga
+
+Ini adalah paket dengan nilai tertinggi karena bukan hanya menyelesaikan satu pekerjaan, tetapi menjadi **lapisan pengetahuan dan workspace AI perusahaan**.
+
+### Gaia
+
+`gaia_enabled = true`
+`visibility = PUBLIC`
+`status = ACTIVE` setelah QA
+
+---
+
+# RINGKASAN HARGA LAUNCH
+
+| # | Package                   | Harga / bulan |
+| - | ------------------------- | ------------: |
+| 1 | Gustafta SBU              |     Rp750.000 |
+| 2 | Gustafta Tender           |   Rp1.000.000 |
+| 3 | Gustafta Dokumen Proyek   |   Rp1.000.000 |
+| 4 | Gustafta Legalitas & OSS  |     Rp750.000 |
+| 5 | Gustafta ISO & Compliance |   Rp1.500.000 |
+| 6 | Gustafta Business Memory  |   Rp2.500.000 |
+
+**Rentang harga: Rp750 ribu – Rp2,5 juta/bulan.**
+
+---
+
+# CONFIGURATION RULE
+
+Untuk keenam package:
+
+### Status awal
+
+`DRAFT`
+
+### Setelah QA
+
+`ACTIVE`
+
+### Visibility
+
+`PUBLIC`
+
+### Gaia
+
+`gaia_enabled = true`
+
+### Harga
+
+Semua > Rp0
+
+### Komposisi
+
+Minimal 1 product member
+
+### Version
+
+Publish pertama otomatis membuat:
+
+`version = 1`
+
+---
+
+# ACCESS MODEL
+
+Jangan menjadikan semua capability FULL tanpa batas.
+
+Gunakan prinsip:
+
+**FULL**
+→ capability inti paket
+
+**LIMITED**
+→ capability bernilai tinggi yang perlu dikontrol kapasitasnya
+
+**VIEW_ONLY**
+→ informasi/reference yang tidak membutuhkan konsumsi AI besar
+
+Usage limit digunakan apabila sebuah capability berpotensi menghasilkan biaya AI besar.
+
+Customer tidak perlu melihat token.
+
+Customer cukup melihat:
+
+> **Apa yang bisa saya selesaikan dengan paket ini?**
+
+---
+
+# CAPACITY MODEL
+
+Paket tidak dijual berdasarkan token.
+
+Gunakan konsep:
+
+**SIAP / kapasitas penggunaan**
+
+Jika customer membutuhkan kapasitas lebih besar:
+
+**Additional Capacity**
+
+Dengan demikian:
+
+Harga dasar
+→ memberikan kapasitas SIAP tertentu
+
+Kebutuhan lebih besar
+→ membeli Additional Capacity
+
+Bukan:
+
+> "Anda menghabiskan 14.283 token."
+
+Tetapi:
+
+> "Kapasitas penggunaan paket Anda telah mencapai batas. Tambahkan kapasitas untuk melanjutkan."
+
+---
+
+# STRATEGI DURASI
+
+Untuk LAUNCH pertama:
+
+**Gunakan 1 bulan terlebih dahulu.**
+
+Jangan membuat 3/6/12 bulan sebelum enam package terbukti berjalan dengan benar.
+
+Setelah conversion dan usage terlihat, baru dibuat:
+
+* 3 bulan
+* 6 bulan
+* 12 bulan
+
+Dengan pricing bundle/discount yang berbeda.
+
+Dengan demikian kita tidak memenuhi registry dengan banyak variasi sebelum mengetahui package mana yang benar-benar laku.
+
+---
+
+# URUTAN IMPLEMENTASI
+
+## STEP 1
+
+Buat 6 package sebagai:
+
+`DRAFT`
+
+## STEP 2
+
+Masukkan product composition.
+
+## STEP 3
+
+Set access level.
+
+## STEP 4
+
+Set harga:
+
+* SBU → 750000
+* Tender → 1000000
+* Dokumen Proyek → 1000000
+* Legalitas & OSS → 750000
+* ISO & Compliance → 1500000
+* Business Memory → 2500000
+
+## STEP 5
+
+QA menggunakan GAIA Preview.
+
+Pastikan setiap package menunjukkan:
+
+🟢 **TAMPIL DI GAIA**
+
+## STEP 6
+
+Verifikasi:
+
+* packageId
+* solution
+* sector
+* tier
+* duration
+* price
+* composition
+* access level
+* snapshot version
+
+## STEP 7
+
+Jika seluruhnya lolos:
+
+`DRAFT → ACTIVE`
+
+dan
+
+`gaia_enabled = true`
+
+## STEP 8
+
+Lakukan Gaia Sync.
+
+---
+
+# TARGET KONDISI SETELAH LAUNCH
+
+Sebelum:
+
+**14 Products**
+→ 0 Gaia eligible
+
+Setelah:
+
+**14 Products**
+→ building blocks
+
+**6 Packages**
+→ commercial products
+
+**6 Gaia Eligible Packages**
+→ customer-facing solutions
+
+Ini mengubah Catalog Registry Gustafta dari sekadar database produk menjadi:
+
+**Commercial Solution Layer untuk Gaia.**
