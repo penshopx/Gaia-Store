@@ -68,7 +68,12 @@ export async function gustaftaFetch<T>(path: string): Promise<T> {
       throw new Error(`Gustafta API ${res.status}: ${path}`);
     }
 
-    data = (await res.json()) as T;
+    const raw = await res.json();
+
+    // Gustafta wraps list responses: { success, data: [...], meta: {...} }
+    // Unwrap so callers always receive the payload directly.
+    data = (raw && typeof raw === "object" && "data" in raw ? raw.data : raw) as T;
+
     cache.set(path, { data, fetchedAt: Date.now() });
     lastSyncAt = new Date();
     syncErrorCount = 0;

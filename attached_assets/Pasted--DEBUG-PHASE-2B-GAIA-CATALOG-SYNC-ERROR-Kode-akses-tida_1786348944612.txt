@@ -1,0 +1,263 @@
+# DEBUG PHASE 2B — GAIA CATALOG SYNC
+
+## ERROR: "Kode akses tidak valid"
+
+GAIA Catalog API sudah dikonfigurasi dengan benar:
+
+GUSTAFTA_CATALOG_BASE_URL sudah tersedia.
+
+Namun ketika Admin GAIA membuka /admin-katalog dan menekan:
+
+"Sync Sekarang"
+
+muncul:
+
+"KODE AKSES TIDAK VALID"
+
+Jumlah katalog tetap:
+
+0 produk
+0 solusi
+0 paket
+
+JANGAN melakukan rewrite.
+
+JANGAN mengubah Gustafta.
+
+JANGAN mengubah Catalog API Gustafta.
+
+Fokus hanya melakukan diagnosis pada GAIA.
+
+==================================================
+
+## 1. TRACE REQUEST
+
+==================================================
+
+Telusuri alur lengkap tombol:
+
+"Sync Sekarang"
+
+mulai dari:
+
+Frontend
+→ API request
+→ backend route
+→ authentication
+→ Gustafta client
+→ Gustafta Catalog API
+
+Identifikasi tepat di layer mana pesan:
+
+"Kode akses tidak valid"
+
+dihasilkan.
+
+==================================================
+
+## 2. JANGAN MENEBak
+
+==================================================
+
+Jangan langsung mengganti authentication.
+
+Cari source code yang menghasilkan string:
+
+"Kode akses tidak valid"
+
+dan tampilkan:
+
+* file
+* function
+* route
+* middleware
+* condition
+
+yang menghasilkan error tersebut.
+
+==================================================
+
+## 3. PERIKSA ADMIN AUTH
+
+==================================================
+
+Periksa apakah /admin-katalog menggunakan:
+
+* admin password
+* access code
+* session
+* cookie
+* token
+* API key
+* environment variable
+* middleware
+
+Bandingkan dengan halaman admin yang SUDAH BERHASIL:
+
+/admin-pesanan
+
+Jangan membuat authentication baru jika /admin-pesanan sudah memiliki authentication yang benar.
+
+Gunakan authentication existing.
+
+==================================================
+
+## 4. PERIKSA POST /catalog/sync
+
+==================================================
+
+Trace endpoint:
+
+POST /catalog/sync
+
+Pastikan:
+
+* route benar
+* auth middleware benar
+* request dari frontend membawa credential yang benar
+* backend membaca credential dengan cara yang sama seperti admin-pesanan
+
+==================================================
+
+## 5. PERIKSA ENVIRONMENT VARIABLES
+
+==================================================
+
+Identifikasi environment variables yang digunakan oleh:
+
+/admin-pesanan
+
+dan:
+
+/admin-katalog
+
+Bandingkan.
+
+Jika admin-pesanan menggunakan variable tertentu, jangan membuat variable authentication baru tanpa alasan.
+
+==================================================
+
+## 6. PERIKSA GUSTAFTA CONNECTION
+
+==================================================
+
+Setelah authentication GAIA lolos, pastikan backend dapat memanggil:
+
+GET <GUSTAFTA_CATALOG_BASE_URL>/products
+
+dan endpoint lain.
+
+Jika Gustafta mengembalikan error:
+
+401
+403
+404
+500
+
+laporkan error sebenarnya.
+
+Jangan mengubah error menjadi:
+
+"Kode akses tidak valid"
+
+kecuali memang error tersebut berasal dari authentication GAIA.
+
+==================================================
+
+## 7. ERROR MAPPING
+
+==================================================
+
+Pisahkan dengan jelas:
+
+ADMIN AUTH ERROR
+
+dari:
+
+GUSTAFTA API ERROR
+
+Contoh:
+
+401 GAIA admin
+→ "Kode akses admin tidak valid"
+
+401/403 Gustafta
+→ "Gustafta Catalog API menolak request"
+
+404
+→ "Catalog endpoint tidak ditemukan"
+
+500
+→ "Gustafta Catalog API mengalami error"
+
+Network error
+→ "Gustafta Catalog API tidak dapat dihubungi"
+
+Jangan menyamarkan semua error menjadi satu pesan.
+
+==================================================
+
+## 8. TEST
+
+==================================================
+
+Setelah diagnosis/perbaikan:
+
+1. Login admin
+2. Buka /admin-katalog
+3. Klik Sync Sekarang
+4. Pastikan request berhasil
+5. Pastikan Gustafta API terpanggil
+6. Pastikan cache terisi
+7. Pastikan jumlah produk/solusi/paket muncul
+
+Jika masih gagal, tampilkan error layer yang sebenarnya.
+
+==================================================
+
+## 9. JANGAN SENTUH
+
+==================================================
+
+Jangan mengubah:
+
+* Gustafta
+* Gustafta Catalog API
+* Product Registry
+* Package Engine
+* Scalev
+* Existing orders
+* Existing products
+* Existing payment
+* /admin-pesanan authentication
+
+==================================================
+
+## 10. FINAL REPORT
+
+==================================================
+
+Setelah diagnosis, laporkan:
+
+1. Source error "Kode akses tidak valid"
+2. File
+3. Function
+4. Route
+5. Authentication mechanism
+6. Environment variable terkait
+7. Root cause
+8. Fix applied jika diperlukan
+9. Test result
+10. Gustafta API response setelah authentication berhasil
+
+Jangan mengatakan selesai hanya karena error message hilang.
+
+Pastikan:
+
+GAIA Admin
+→ Catalog Sync
+→ Gustafta Catalog API
+→ Data received
+→ Cache populated
+
+benar-benar berhasil.

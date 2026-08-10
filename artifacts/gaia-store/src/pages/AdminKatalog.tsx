@@ -40,9 +40,25 @@ export default function AdminKatalog() {
     if (authed) fetchStatus();
   }, [authed, fetchStatus]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setAuthError("");
+    // Verify passcode against backend before granting access
+    // (mirrors AdminPesanan behaviour of validating on login)
+    try {
+      const res = await fetch("/api/catalog/sync", {
+        method: "POST",
+        headers: { "x-admin-passcode": passcode },
+      });
+      if (res.status === 401) {
+        setAuthError("Kode akses tidak valid.");
+        return;
+      }
+      // 200 (sync ok) or any non-401 error (Gustafta down, etc.) → passcode accepted
+    } catch {
+      setAuthError("Tidak dapat terhubung ke server. Coba lagi.");
+      return;
+    }
     sessionStorage.setItem("gaia_admin_authed", "1");
     sessionStorage.setItem("gaia_admin_passcode", passcode);
     setAuthed(true);
