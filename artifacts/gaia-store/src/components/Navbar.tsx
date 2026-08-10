@@ -1,5 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "wouter";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,10 +20,9 @@ export default function Navbar() {
 
         {/* Center: Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
-          <a href="#" className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">Kategori</a>
-          <a href="#" className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">Bimtek & PUB</a>
-          <a href="#" className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">Template</a>
-          <a href="#" className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">AI Tools</a>
+          <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">Produk Konstruksi</Link>
+          <Link href="/produk" className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">Produk Digital</Link>
+          <Link href="/solusi" className="text-sm font-medium text-muted-foreground hover:text-white transition-colors">Solusi</Link>
         </nav>
 
         {/* Right: Actions */}
@@ -61,10 +61,9 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t border-border bg-background p-4 flex flex-col gap-4 shadow-xl">
           <nav className="flex flex-col gap-3">
-            <a href="#" className="text-sm font-medium text-foreground p-2 rounded hover:bg-muted">Kategori</a>
-            <a href="#" className="text-sm font-medium text-foreground p-2 rounded hover:bg-muted">Bimtek & PUB</a>
-            <a href="#" className="text-sm font-medium text-foreground p-2 rounded hover:bg-muted">Template</a>
-            <a href="#" className="text-sm font-medium text-foreground p-2 rounded hover:bg-muted">AI Tools</a>
+            <Link href="/" className="text-sm font-medium text-foreground p-2 rounded hover:bg-muted">Produk Konstruksi</Link>
+            <Link href="/produk" className="text-sm font-medium text-foreground p-2 rounded hover:bg-muted">Produk Digital</Link>
+            <Link href="/solusi" className="text-sm font-medium text-foreground p-2 rounded hover:bg-muted">Solusi</Link>
           </nav>
           <div className="h-px bg-border w-full" />
           <div className="flex flex-col gap-3 pt-1">

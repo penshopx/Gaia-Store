@@ -1,0 +1,917 @@
+# GAIA STORE — PHASE 2B
+
+# GUSTAFTA CATALOG CONSUMER + DIGITAL COMMERCE LAYER
+
+Anda bekerja pada aplikasi GAIA Store yang SUDAH BERJALAN.
+
+Gustafta telah menyelesaikan:
+
+* Phase 1 Product Registry
+* Solution Registry
+* Sector Registry
+* Tier Registry
+* Package Registry
+* Access Matrix
+* Package Versioning
+* Phase 2A Catalog API
+
+GAIA sekarang harus menjadi:
+
+> DIGITAL PRODUCT & SOLUTION COMMERCE LAYER
+
+Gustafta tetap menjadi:
+
+> SOURCE OF TRUTH
+
+==================================================
+
+## 0. ATURAN PALING PENTING
+
+==================================================
+
+JANGAN rewrite aplikasi GAIA.
+
+JANGAN menghapus produk existing.
+
+JANGAN menghapus halaman existing.
+
+JANGAN mengganti framework.
+
+JANGAN mengganti database existing tanpa alasan.
+
+JANGAN membuat Product Registry baru sebagai source of truth.
+
+JANGAN membuat Package Engine baru.
+
+JANGAN membuat Access Matrix baru.
+
+JANGAN menyalin seluruh database Gustafta ke database GAIA.
+
+JANGAN membuat provisioning customer pada tahap ini.
+
+JANGAN mengaktifkan payment production pada tahap ini.
+
+JANGAN mengubah Scalev production configuration.
+
+Gunakan pendekatan incremental.
+
+Audit aplikasi GAIA terlebih dahulu.
+
+==================================================
+
+## 1. AUDIT GAIA EXISTING
+
+==================================================
+
+Sebelum coding, identifikasi:
+
+* framework
+* frontend
+* backend
+* database
+* existing product/catalog model
+* existing store
+* existing checkout
+* existing order
+* existing customer model
+* existing authentication
+* existing admin
+* existing pricing
+* existing payment integration
+* existing routes
+* environment variables
+* deployment/domain
+
+Cari apakah GAIA sudah memiliki:
+
+products
+categories
+plans
+subscriptions
+orders
+customers
+checkout
+payment
+catalog
+admin
+
+Jangan membuat duplicate jika existing structure dapat digunakan sebagai commerce cache/reference.
+
+==================================================
+
+## 2. SOURCE OF TRUTH
+
+==================================================
+
+Gustafta adalah SOURCE OF TRUTH untuk:
+
+* products
+* solutions
+* sectors
+* tiers
+* packages
+* package composition
+* package version
+* eligibility
+* access configuration
+
+GAIA hanya bertanggung jawab atas:
+
+* catalog presentation
+* discovery
+* merchandising
+* product detail
+* solution detail
+* checkout preparation
+* order commerce layer
+
+==================================================
+
+## 3. GUSTAFTA CATALOG API
+
+==================================================
+
+GAIA harus membaca katalog dari:
+
+https://<DOMAIN-GUSTAFTA>/api/v1/catalog
+
+JANGAN hard-code production domain jika domain belum tersedia.
+
+Gunakan environment variable:
+
+GUSTAFTA_CATALOG_BASE_URL
+
+Contoh:
+
+GUSTAFTA_CATALOG_BASE_URL=https://gustafta.my.id/api/v1/catalog
+
+Sesuaikan dengan domain production sebenarnya.
+
+==================================================
+
+## 4. API ENDPOINTS
+
+==================================================
+
+Gunakan endpoint berikut dari Gustafta:
+
+GET /products
+
+GET /products/:id
+
+GET /solutions
+
+GET /solutions/:id
+
+GET /sectors
+
+GET /tiers
+
+GET /packages
+
+GET /packages/:id
+
+GET /packages/:id/products
+
+GET /packages/:id/version
+
+Jangan membuat endpoint baru di Gustafta.
+
+Gunakan API yang sudah tersedia.
+
+==================================================
+
+## 5. GAIA CATALOG ARCHITECTURE
+
+==================================================
+
+Jangan menjadikan GAIA database sebagai source of truth.
+
+Jika GAIA membutuhkan local cache untuk performance, gunakan:
+
+Gustafta Product ID
+Gustafta Package ID
+Gustafta Package Version
+
+sebagai reference.
+
+Local cache boleh menyimpan:
+
+* display data
+* image
+* SEO data
+* merchandising data
+* local search metadata
+* cache timestamp
+
+Tetapi jangan mengubah:
+
+* package composition
+* access matrix
+* package version
+* product eligibility
+
+di GAIA.
+
+==================================================
+
+## 6. PRODUCT CATALOG
+
+==================================================
+
+Buat / sesuaikan halaman:
+
+/products
+
+atau route existing yang paling sesuai.
+
+Tampilkan produk satuan dari Gustafta.
+
+Kategori minimal:
+
+* AI Specialist
+* AI Workspace
+* Document AI
+* Digital Tools
+* Mini Apps
+* Generator
+* Ebook
+* Module
+* Template
+* Checklist
+* Business Kit
+* E-Course
+* Other Digital Products
+
+Gunakan product_type dari Gustafta.
+
+==================================================
+
+## 7. SOLUTION CATALOG
+
+==================================================
+
+Buat halaman:
+
+/solutions
+
+Tampilkan Solution Family:
+
+* Legalitas
+* OSS
+* SBU
+* SKK
+* Tender
+* Proyek
+* Compliance
+* Kompetensi
+* Finance
+* dan solution lain yang dikirim Gustafta.
+
+Jangan hard-code daftar solution.
+
+Data harus berasal dari Gustafta API.
+
+==================================================
+
+## 8. SOLUTION DISCOVERY FLOW
+
+==================================================
+
+Buat alur customer:
+
+STEP 1
+Pilih kebutuhan
+
+STEP 2
+Pilih sektor usaha
+
+STEP 3
+Pilih tier
+
+STEP 4
+Pilih durasi
+
+STEP 5
+Lihat solution package
+
+STEP 6
+Lihat detail
+
+STEP 7
+Checkout
+
+Contoh:
+
+Saya membutuhkan:
+Tender
+
+Sektor:
+Konstruksi
+
+Tier:
+Professional
+
+Durasi:
+6 Bulan
+
+Hasil:
+
+Gustafta Tender — Konstruksi — Professional — 6 Bulan
+
+==================================================
+
+## 9. PACKAGE DETAIL PAGE
+
+==================================================
+
+Setiap package detail harus menampilkan:
+
+Nama package
+
+Solution
+
+Sector
+
+Tier
+
+Duration
+
+Price
+
+Description
+
+Problem solved
+
+Who is it for
+
+Benefits
+
+Included products
+
+Access level jika relevan untuk customer
+
+Usage limitation jika memang customer perlu mengetahuinya
+
+FAQ
+
+CTA
+
+Contoh:
+
+GUSTAFTA TENDER
+Konstruksi
+Professional
+6 Bulan
+
+Yang Anda dapatkan:
+
+✓ Tender Workspace
+✓ Tender Document Analyzer
+✓ Tender AI Specialist
+✓ Tender Toolkit
+✓ Executive Summary
+
+Jangan menampilkan jargon internal:
+
+* token
+* inference cost
+* internal AI margin
+* API key
+* internal prompts
+
+==================================================
+
+## 10. PRODUCT DETAIL PAGE
+
+==================================================
+
+Produk satuan tetap dapat dijual secara independen.
+
+Tampilkan:
+
+* name
+* description
+* use case
+* benefit
+* what you get
+* price
+* delivery/access method
+* CTA
+
+Jika produk termasuk package:
+
+Tampilkan:
+
+"Produk ini juga tersedia dalam paket solusi."
+
+Contoh:
+
+Tender AI Specialist
+
+→ Available standalone
+
+→ Included in Gustafta Tender
+
+==================================================
+
+## 11. PRODUCT LADDER
+
+==================================================
+
+GAIA harus mendukung:
+
+PRODUCT
+↓
+RELATED PRODUCTS
+↓
+SOLUTION
+↓
+UPGRADE
+
+Contoh:
+
+Tender Checklist
+↓
+Tender Analyzer
+↓
+Tender AI Specialist
+↓
+Gustafta Tender
+
+Gunakan cross-sell secara natural.
+
+==================================================
+
+## 12. PRODUCT STATUS
+
+==================================================
+
+Hanya tampilkan produk yang dikirim oleh Gustafta Catalog API.
+
+Jangan membuat produk GAIA sendiri untuk menggantikan produk Gustafta.
+
+Jika product tidak lagi tersedia dari Gustafta:
+
+→ jangan tampilkan sebagai available.
+
+Jangan otomatis menghapus historical order.
+
+==================================================
+
+## 13. PACKAGE VERSION
+
+==================================================
+
+PENTING.
+
+Saat customer melihat package:
+
+GAIA harus menyimpan:
+
+package_id
+package_version
+
+ketika package dipilih/masuk checkout.
+
+Jangan hanya menyimpan nama package.
+
+Contoh:
+
+package_id:
+PKG-TENDER-KONSTRUKSI-PRO
+
+package_version:
+2
+
+Historical order harus selalu mengacu pada package version saat pembelian.
+
+==================================================
+
+## 14. LOCAL CACHE
+
+==================================================
+
+Jika GAIA existing membutuhkan database catalog:
+
+buat catalog cache/reference.
+
+Minimal:
+
+external_product_id
+external_package_id
+external_solution_id
+external_sector_id
+external_tier_id
+external_version
+last_synced_at
+
+Jangan menjadikan cache sebagai source of truth.
+
+==================================================
+
+## 15. SYNC
+
+==================================================
+
+Implementasikan catalog sync.
+
+Minimal:
+
+* manual sync
+* automatic refresh
+* cache expiry
+
+Jika API cache Gustafta adalah 60 detik, GAIA tidak perlu melakukan request berlebihan.
+
+Gunakan caching yang wajar.
+
+Tambahkan admin action:
+
+[SYNC GUSTAFTA CATALOG]
+
+Admin dapat melihat:
+
+Last sync
+Number of products
+Number of solutions
+Number of packages
+Number of errors
+
+==================================================
+
+## 16. ADMIN CATALOG VIEW
+
+==================================================
+
+Tambahkan halaman admin:
+
+GAIA CATALOG
+
+Tampilkan:
+
+PRODUCTS
+SOLUTIONS
+PACKAGES
+LAST SYNC
+SYNC STATUS
+API STATUS
+
+Admin tidak boleh mengedit package composition dari GAIA.
+
+Admin hanya dapat:
+
+* feature
+* reorder
+* hide from GAIA merchandising jika architecture mengizinkan
+* set homepage placement
+* SEO title
+* SEO description
+* merchandising metadata
+
+Namun source availability tetap dari Gustafta.
+
+==================================================
+
+## 17. COMMERCE SEPARATION
+
+==================================================
+
+Pisahkan:
+
+CATALOG DATA
+dan
+COMMERCE DATA
+
+Catalog:
+
+dari Gustafta.
+
+Commerce:
+
+di GAIA.
+
+Commerce dapat menyimpan:
+
+* customer
+* cart
+* checkout session
+* order
+* order item
+* payment reference
+* payment status
+
+Namun order item harus selalu menyimpan:
+
+external_product_id
+
+atau:
+
+external_package_id
+
+dan jika package:
+
+external_package_version
+
+==================================================
+
+## 18. CHECKOUT PREPARATION
+
+==================================================
+
+Buat checkout architecture.
+
+Checkout harus menerima:
+
+PRODUCT atau PACKAGE.
+
+Untuk PACKAGE:
+
+required:
+
+package_id
+package_version
+duration
+price
+currency
+
+Jangan menerima package berdasarkan nama saja.
+
+==================================================
+
+## 19. SCALEV
+
+==================================================
+
+Untuk tahap ini:
+
+JANGAN mengubah production payment.
+
+JANGAN mengaktifkan transaksi nyata baru.
+
+Jika existing Scalev integration sudah ada, pertahankan.
+
+Buat payment integration layer yang siap digunakan.
+
+Environment variables harus digunakan untuk credentials.
+
+Jangan hard-code API key.
+
+==================================================
+
+## 20. PROVISIONING — NOT YET
+
+==================================================
+
+Jangan melakukan access activation langsung dari GAIA.
+
+Setelah payment berhasil di fase berikutnya:
+
+GAIA akan mengirim:
+
+customer
+order
+package_id
+package_version
+duration
+payment status
+
+ke Gustafta.
+
+Gustafta yang akan melakukan:
+
+Access Matrix
+→ Provisioning
+→ Workspace activation
+→ AI Specialist access
+→ Usage rules
+→ Expiration
+
+Phase 2B BELUM melakukan provisioning.
+
+==================================================
+
+## 21. DP STORE
+
+==================================================
+
+Jangan mencampurkan DP Store.
+
+DP Store adalah:
+
+* jasa dokumen
+* jasa keuangan
+* biro jasa
+* human consulting
+* custom project
+* negotiation
+* human-assisted service
+
+GAIA fokus:
+
+DIGITAL PRODUCTS
++
+AI PRODUCTS
++
+SOLUTION PACKAGES
+
+Jika customer membutuhkan jasa manusia:
+
+CTA:
+
+"Need professional assistance?"
+
+→ DP Store
+
+==================================================
+
+## 22. BRAND ARCHITECTURE
+
+==================================================
+
+Gunakan struktur:
+
+DOKUMENPROYEK.COM
+→ Digital / Project ecosystem
+
+GAIA STORE
+→ Digital Product & Solution Marketplace
+
+GUSTAFTA
+→ AI Production & Intelligence Engine
+
+DP STORE
+→ Human Service / Project Marketplace
+
+Scalev
+→ Payment Gateway
+
+==================================================
+
+## 23. UX PRINCIPLE
+
+==================================================
+
+Customer tidak perlu mengetahui bahwa katalog berasal dari API.
+
+Customer hanya merasakan:
+
+Cari kebutuhan
+→ pilih solusi
+→ pilih sektor
+→ pilih tier
+→ pilih durasi
+→ checkout
+
+GAIA harus terlihat seperti marketplace profesional.
+
+Jangan membuat interface terasa seperti admin database.
+
+==================================================
+
+## 24. ERROR HANDLING
+
+==================================================
+
+Jika Gustafta API unavailable:
+
+jangan menghapus data cache secara otomatis.
+
+Tampilkan:
+
+"Catalog temporarily unavailable. Please try again."
+
+Jika product/package sudah tidak tersedia:
+
+jangan izinkan checkout baru.
+
+Historical orders tetap dapat dibuka.
+
+==================================================
+
+## 25. TESTING
+
+==================================================
+
+Test:
+
+1. Gustafta API connection
+2. Product sync
+3. Solution sync
+4. Sector sync
+5. Tier sync
+6. Package sync
+7. Package product composition
+8. Package version
+9. Filtering
+10. Product detail
+11. Package detail
+12. Cache
+13. Manual sync
+14. API unavailable
+15. Hidden product
+16. Hidden package
+17. Invalid package
+18. Existing GAIA features
+19. Existing login
+20. Existing checkout
+21. Existing Scalev integration
+
+Jangan melakukan live payment test tanpa konfirmasi.
+
+==================================================
+
+## 26. NO DUPLICATION
+
+==================================================
+
+Jangan membuat:
+
+GAIA Product Registry
+sebagai source of truth.
+
+Jangan membuat:
+
+GAIA Package Builder.
+
+Jangan membuat:
+
+GAIA Access Matrix.
+
+Jangan membuat:
+
+GAIA AI Configuration.
+
+Semua itu tetap berada di Gustafta.
+
+==================================================
+
+## 27. PRODUCTION SAFETY
+
+==================================================
+
+Sebelum perubahan:
+
+buat backup / checkpoint sesuai environment Replit.
+
+Gunakan migration aman.
+
+Jangan menghapus existing data.
+
+Jangan mengubah production payment credentials.
+
+Jangan publish seluruh katalog secara otomatis.
+
+Untuk tahap awal gunakan:
+
+3–5 sample products
+
+dan:
+
+1–2 sample solution packages.
+
+==================================================
+
+## 28. FINAL REPORT
+
+==================================================
+
+Setelah selesai laporkan:
+
+1. Existing GAIA architecture
+2. Gustafta API integration
+3. Environment variables
+4. Catalog routes
+5. Product routes
+6. Solution routes
+7. Package routes
+8. Sync implementation
+9. Cache implementation
+10. Database changes
+11. Checkout preparation
+12. Scalev status
+13. Tests
+14. Existing features preserved
+15. Known issues
+16. Exact steps needed for Phase 3
+
+PENTING:
+
+Jangan mengklaim payment atau provisioning sudah selesai jika belum.
+
+FINAL PRINCIPLE:
+
+GUSTAFTA
+= SOURCE OF TRUTH
+
+GAIA
+= DISPLAY + DISCOVER + MERCHANDISE + SELL
+
+SCALEV
+= PAYMENT
+
+Gustafta creates and configures.
+
+GAIA displays and sells.
+
+Do not duplicate the production engine inside GAIA.
