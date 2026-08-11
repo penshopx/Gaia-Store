@@ -14,6 +14,7 @@ import {
   gustaftaApi,
   type GaiaSolution, type GaiaSector, type GaiaTier, type GaiaPackage,
 } from "@/lib/gustafta-api";
+import { ADMIN_WA_NUMBER } from "@/lib/config";
 
 // ── Step definitions ────────────────────────────────────────────────────────
 
@@ -599,16 +600,28 @@ export default function Solusi() {
                 <ArrowRight size={16} />
               </Link>
 
-              <a
-                href={`https://wa.me/6282299417818?text=${encodeURIComponent(
-                  `Halo, saya tertarik dengan paket:\n*${selectedPackage.name}*\nSolusi: ${String(selectedPackage.solution ?? "-")}\nSektor: ${String(selectedPackage.sector ?? "-")}\nTier: ${String(selectedPackage.tier ?? "-")}\nDurasi: ${String(selectedPackage.duration ?? selectedDuration ?? "-")}\nHarga: ${formatPrice(selectedPackage.price, selectedPackage.currency)}`
-                )}`}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full flex items-center justify-center gap-2 border border-border hover:bg-muted text-white font-semibold rounded-xl px-5 py-3 transition-colors text-sm"
-              >
-                Tanya via WhatsApp
-              </a>
+              {/* F2: Use order_cta from Gustafta API if available; fallback to ADMIN_WA_NUMBER */}
+              {selectedPackage.order_cta?.url ? (
+                <a
+                  href={selectedPackage.order_cta.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full flex items-center justify-center gap-2 border border-border hover:bg-muted text-white font-semibold rounded-xl px-5 py-3 transition-colors text-sm"
+                >
+                  {selectedPackage.order_cta.label ?? "Pesan Paket"} via WhatsApp
+                </a>
+              ) : (
+                <a
+                  href={`https://wa.me/${ADMIN_WA_NUMBER}?text=${encodeURIComponent(
+                    `Halo, saya tertarik dengan paket:\n*${selectedPackage.name}*\nSolusi: ${String(selectedPackage.solution ?? "-")}\nSektor: ${String(selectedPackage.sector ?? "-")}\nTier: ${String(selectedPackage.tier ?? "-")}\nDurasi: ${String(selectedPackage.duration ?? selectedDuration ?? "-")}\nHarga: ${formatPrice(selectedPackage.price, selectedPackage.currency)}`
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full flex items-center justify-center gap-2 border border-border hover:bg-muted text-white font-semibold rounded-xl px-5 py-3 transition-colors text-sm"
+                >
+                  Tanya via WhatsApp
+                </a>
+              )}
 
               {/* DP Store CTA */}
               <div className="text-center pt-2">

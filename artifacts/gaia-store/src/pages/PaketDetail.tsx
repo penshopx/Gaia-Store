@@ -10,6 +10,7 @@ import {
   ArrowRight, Package,
 } from "lucide-react";
 import { gustaftaApi, type GaiaPackage, type GaiaProduct } from "@/lib/gustafta-api";
+import { ADMIN_WA_NUMBER } from "@/lib/config";
 
 function formatPrice(price?: number | string, currency?: string): string {
   if (price == null) return "Hubungi kami";
@@ -223,14 +224,26 @@ export default function PaketDetail() {
           >
             Lanjutkan ke Pembayaran <ArrowRight size={16} />
           </Link>
-          <a
-            href={`https://wa.me/6282299417818?text=${encodeURIComponent(`Halo, saya tertarik dengan paket ${pkg.name} (${packageRef}).`)}`}
-            target="_blank"
-            rel="noreferrer"
-            className="w-full flex items-center justify-center gap-2 border border-border hover:bg-muted text-white font-semibold rounded-xl px-5 py-3 transition-colors text-sm"
-          >
-            Tanya via WhatsApp
-          </a>
+          {/* F2: Use order_cta from Gustafta API if available; fallback to ADMIN_WA_NUMBER */}
+          {pkg.order_cta?.url ? (
+            <a
+              href={pkg.order_cta.url}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full flex items-center justify-center gap-2 border border-border hover:bg-muted text-white font-semibold rounded-xl px-5 py-3 transition-colors text-sm"
+            >
+              {pkg.order_cta.label ?? "Pesan Paket"} via WhatsApp
+            </a>
+          ) : (
+            <a
+              href={`https://wa.me/${ADMIN_WA_NUMBER}?text=${encodeURIComponent(`Halo, saya tertarik dengan paket ${pkg.name} (${packageRef}).`)}`}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full flex items-center justify-center gap-2 border border-border hover:bg-muted text-white font-semibold rounded-xl px-5 py-3 transition-colors text-sm"
+            >
+              Tanya via WhatsApp
+            </a>
+          )}
           <div className="text-center">
             <p className="text-xs text-muted-foreground">
               Butuh jasa manusia?{" "}

@@ -53,6 +53,15 @@ export interface GaiaTier {
   [key: string]: unknown;
 }
 
+export interface GaiaOrderCta {
+  type: string;          // "wa_order"
+  label: string;         // "Pesan Paket"
+  wa_number?: string;
+  url: string;           // pre-filled WhatsApp URL from Gustafta
+  message?: string;
+  note?: string;
+}
+
 export interface GaiaPackage {
   id: string | number;
   package_id?: string;
@@ -70,6 +79,7 @@ export interface GaiaPackage {
   faq?: Array<{ q: string; a: string }>;
   version?: number;
   package_version?: number;
+  order_cta?: GaiaOrderCta;  // F1: CTA supplied by Gustafta — use this for "Pesan Paket"
   [key: string]: unknown;
 }
 
