@@ -1,0 +1,173 @@
+READ-ONLY AUDIT — GAIA STORE INTEGRATION WITH GUSTAFTA ENGINE
+
+Jangan mengubah apa pun.
+Jangan edit source code.
+Jangan mengubah database.
+Jangan mengubah environment variables.
+Jangan mengubah deployment.
+Jangan publish/re-publish.
+Jangan membuat endpoint baru.
+Jangan melakukan migration.
+Jangan menghapus atau menambah data.
+
+Tujuan audit:
+Saya ingin mengetahui secara pasti hubungan project Replit ini (Gaia-Store) dengan Gustafta Engine dan Catalog API production.
+
+Konteks arsitektur:
+
+1. Gustafta Engine production:
+   https://gustafta.my.id
+
+2. Gustafta sekarang sudah memiliki GAIA Package Catalog production yang LIVE.
+
+3. Enam package GAIA sudah ACTIVE + GAIA ON + version v1:
+   - SBU Professional 6M — Rp 1.999.000
+   - SKK Basic 3M — Rp 599.000
+   - Tender Professional 6M — Rp 2.499.000
+   - Legalitas Basic 3M — Rp 699.000
+   - Proyek Business 12M — Rp 5.999.000
+   - Finance Professional 6M — Rp 1.999.000
+
+4. Setiap package sudah memiliki CTA:
+   "Pesan Paket"
+
+5. CTA tersebut menghasilkan WhatsApp order message yang membawa:
+   - package_id
+   - package name
+   - version
+   - price
+
+6. Project ini berbeda dengan project DokumenProyek.
+   Project DokumenProyek memiliki entry/navigation "Gaia Store".
+   Project yang sedang diaudit sekarang adalah project standalone:
+   "Gaia-Store"
+
+PERTANYAAN AUDIT:
+
+A. SUMBER DATA
+- Dari mana halaman Gaia Store mendapatkan daftar produk/package?
+- Apakah data produk hard-coded/local/static?
+- Apakah menggunakan database?
+- Apakah menggunakan API eksternal?
+- Jika API, sebutkan endpoint/base URL yang benar-benar digunakan.
+- Jangan menebak. Trace source code dan konfigurasi aktual.
+
+B. HUBUNGAN DENGAN GUSTAFTA
+- Apakah project ini sudah terhubung ke Gustafta Engine?
+- Apakah ada reference ke:
+  gustafta.my.id
+  GUSTAFTA_CATALOG_BASE_URL
+  catalog API
+  package API
+  product registry
+  package registry
+  atau konfigurasi Gustafta lainnya?
+- Tunjukkan file/path source code yang membuktikannya.
+- Jika ada environment variable yang relevan, tampilkan NAMA variable saja.
+  JANGAN tampilkan secret/API key/token/password.
+
+C. PACKAGE CATALOG
+Periksa apakah project ini bisa mengambil package GAIA terbaru dari Gustafta.
+
+Secara khusus cek apakah package berikut dapat ditemukan melalui source/API yang digunakan:
+
+PROYEK-KONSTRUKSI-BUSINESS-12M
+
+Juga cek keenam package:
+- PROYEK-KONSTRUKSI-BUSINESS-12M
+- SBU-PROFESSIONAL-6M
+- SKK-BASIC-3M
+- TENDER-PROFESSIONAL-6M
+- LEGALITAS-BASIC-3M
+- FINANCE-PROFESSIONAL-6M
+
+Jika ID sebenarnya berbeda dari contoh di atas, jangan mengubah apa pun.
+Laporkan ID aktual yang ditemukan.
+
+D. VERSI DAN HARGA
+Jika package berasal dari Gustafta API, verifikasi apakah:
+- version = v1
+- price sesuai catalog production
+- package composition berasal dari API
+- CTA/order_cta berasal dari API
+
+Bandingkan dengan data production yang tersedia.
+Jangan membuat data baru.
+
+E. CTA
+Trace bagaimana tombol pembelian/order dibuat.
+
+Tentukan:
+- Apakah CTA menggunakan "Beli"?
+- Apakah CTA menggunakan "Pesan Paket"?
+- Apakah CTA berasal dari backend/API atau hard-coded di frontend?
+- Apakah package_id + version + price ikut dibawa ke WhatsApp?
+- Apakah nomor WhatsApp berasal dari runtime Gustafta atau hard-coded?
+
+F. DEPLOYMENT
+Tentukan apakah aplikasi preview/current deployment:
+- menggunakan production Gustafta API
+- menggunakan development API
+- menggunakan mock/static data
+- atau belum terhubung sama sekali.
+
+Jangan melakukan deploy.
+
+G. HUBUNGAN DENGAN DOKUMENPROYEK
+Audit apakah ada hubungan teknis antara project Gaia-Store ini dengan project DokumenProyek.
+
+Cari:
+- link/navigation
+- redirect
+- external URL
+- iframe
+- shared API
+- shared environment variable
+- shared catalog
+- atau mekanisme lain.
+
+Jangan mengubah apa pun.
+
+OUTPUT WAJIB:
+
+Berikan laporan dengan format:
+
+1. STATUS INTEGRASI
+   🟢 Connected
+   🟡 Partial
+   🔴 Not connected
+
+2. DATA SOURCE
+   Jelaskan sumber data aktual.
+
+3. GUSTAFTA CONNECTION
+   Jelaskan apakah dan bagaimana project ini terhubung ke Gustafta.
+
+4. PACKAGE VERIFICATION
+   Buat tabel:
+
+   | Package | Found? | Version | Price | Source | CTA |
+
+5. CTA FLOW
+   Jelaskan alur:
+   Gaia Store → API/source → package → CTA → WhatsApp
+
+6. DOKUMENPROYEK RELATION
+   Jelaskan hubungan dengan project DokumenProyek.
+
+7. CRITICAL FINDINGS
+   Hanya temuan faktual.
+
+8. RECOMMENDATION
+   Jika belum terhubung, jelaskan apa yang perlu dilakukan nanti.
+   JANGAN melakukan perubahan sekarang.
+
+9. CHANGE LOG
+   Harus menyatakan:
+   "No changes made."
+
+PENTING:
+Ini adalah AUDIT READ-ONLY.
+Saya hanya meminta pemeriksaan dan bukti.
+Jangan melakukan fix otomatis walaupun menemukan masalah.
+Jangan mengubah source code, database, environment, deployment, atau konfigurasi apa pun.
